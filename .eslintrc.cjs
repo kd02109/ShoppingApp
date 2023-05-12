@@ -13,5 +13,6 @@ module.exports = {
   rules: {
     "react-refresh/only-export-components": "warn",
     "prettier/prettier": ["error", { endOfLine: "auto" }],
+    "react/prop-types": 0, //prop type 무시 설정 typescript를 사용하지 않고 있기 때문에!
   },
 };
