@@ -34,6 +34,9 @@ const DropBox = styled.div`
   div:last-child {
     border: none;
   }
+  span {
+    font-size: ${(props) => props.theme.font.small};
+  }
 `;
 
 function Dropdown() {
