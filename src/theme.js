@@ -8,6 +8,8 @@ const theme = {
   title: "40px",
   percentColor: "#452CDD",
   footerColor: "#888888",
+  outerMargin: "76px",
+  cardMargin: "24px",
 };
 
 export default theme;
