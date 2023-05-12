@@ -2,6 +2,7 @@ import styled from "styled-components";
 import img from "../assest/logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
+import Dropdown from "./Dropdown";
 
 const Head = styled.header`
   width: 90%;
@@ -34,16 +35,31 @@ const StyledIcon = styled(FontAwesomeIcon)`
   cursor: pointer;
 `;
 
-export default function Header() {
+const LeftBox = styled.div`
+  position: relative;
+`;
+
+export default function Header({ click, setClick }) {
+  const handleClick = () => {
+    if (click) {
+      setClick(false);
+    }
+  };
   return (
-    <Head>
+    <Head onClick={handleClick}>
       <div>
         <LOGO src={img} alt="logo" />
         <Title>COZ Shopping</Title>
       </div>
-      <div>
-        <StyledIcon icon={faBars} />
-      </div>
+      <LeftBox>
+        <StyledIcon
+          icon={faBars}
+          onClick={() => {
+            setClick((prev) => !prev);
+          }}
+        />
+        {click && <Dropdown />}
+      </LeftBox>
     </Head>
   );
 }

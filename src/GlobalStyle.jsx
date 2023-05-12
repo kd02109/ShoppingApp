@@ -48,7 +48,11 @@ table {
 #root {
  width: 100vw;
  height: 100vh;
+}
 
+a {
+	all: unset;
+	cursor: pointer;
 }
 `;
 
