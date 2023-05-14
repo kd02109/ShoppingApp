@@ -15,6 +15,8 @@
 - 기존 CRA로 형성한 react 템플릿에서는 BrowserRouter로 감싸는 형태로 작업하였을 때 정상적으로 출력이 되었지만, vite 템플릿에서는 작동이 되지 않아서 공식 홈페이지 듀토리얼을 참고하면서 다시 진행하였습니다.
 - [공식 블로그](https://reactrouter.com/en/main/start/tutorial)
   - 4개의 페이지를 만들어서 기본 router 구성 Home, ProductList, Bookmark, NotFound
+  - BrowserRouter와 createBrowserRouter의 차이에 대해서 이해할 수 있었다. createBrowserRouter에서는 DataRoiter를 제공하기 때문에 더 많은 기능을 사용할 수 있었다. (ex. data APIs) 따라서 NotFound 페이지에서 사용하고 있는 useRouteError 훅은 createBrowserRouter에서만 사용가능하였다. [링크](https://reactrouter.com/en/6.11.1/routers/picking-a-router)
+
 
 ### 2. 기본 CSS 설정
 - styledComponent의 전역 스타일 설정하기, `createGlobalStyle`를 활용했습니다. 그리고 reset css를 적용했습니다. [reset css](https://meyerweb.com/eric/tools/css/reset/)
