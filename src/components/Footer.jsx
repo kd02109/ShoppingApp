@@ -7,8 +7,7 @@ const Foot = styled.footer`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: fixed; //포지션 임시 고정
-  bottom: 0; // 포지션 임시 고정
+  margin-top: 24px;
   color: ${(props) => props.theme.footerColor};
   border-top: 1px solid ${(props) => props.theme.footerColor};
   span {
@@ -19,9 +18,9 @@ const Foot = styled.footer`
   }
 `;
 
-export default function Footer() {
+export default function Footer({ handleClick }) {
   return (
-    <Foot>
+    <Foot onClick={handleClick}>
       <span>개인정보 처리방침 | 이용 약관</span>
       <span>All rights reserved @ Codestates</span>
     </Foot>

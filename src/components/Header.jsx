@@ -3,6 +3,7 @@ import img from "../assest/logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import Dropdown from "./Dropdown";
+import useHeaderClick from "../hook/useHeaderClick";
 
 const Head = styled.header`
   width: 90%;
@@ -39,12 +40,7 @@ const LeftBox = styled.div`
   position: relative;
 `;
 
-export default function Header({ click, setClick }) {
-  const handleClick = () => {
-    if (click) {
-      setClick(false);
-    }
-  };
+export default function Header({ click, setClick, handleClick }) {
   return (
     <Head onClick={handleClick}>
       <div>
