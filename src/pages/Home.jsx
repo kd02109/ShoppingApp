@@ -1,13 +1,10 @@
 import { useState, useEffect } from "react";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 import { useQuery } from "@tanstack/react-query";
 import getList from "../api/api";
 import Loading from "../components/Loading";
 import styled from "styled-components";
 import randomNum from "../util/randomnum";
 import Card from "../components/Card";
-import useHeaderClick from "../hook/useHeaderClick";
 
 const Main = styled.main`
   margin-top: 104px;
@@ -26,9 +23,7 @@ const List = styled.ul`
   flex-wrap: wrap;
 `;
 
-function Home() {
-  const { click, setClick, handleClick } = useHeaderClick();
-
+function Home({ handleClick }) {
   // 보여줄 상품 리스트 랜덤으로 선정
   const [number, setNumber] = useState("");
   // 화면 변경 표시 제거
@@ -47,7 +42,6 @@ function Home() {
   }, []);
   return (
     <>
-      <Header click={click} setClick={setClick} handleClick={handleClick} />
       <Main onClick={handleClick}>
         {isLoading && <Loading />}
         {!isLoading && !loading && (
@@ -64,7 +58,6 @@ function Home() {
           </>
         )}
       </Main>
-      <Footer handleClick={handleClick} />
     </>
   );
 }
