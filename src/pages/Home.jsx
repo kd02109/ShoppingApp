@@ -1,6 +1,4 @@
 import { useState, useEffect } from "react";
-import { useQuery } from "@tanstack/react-query";
-import getList from "../api/api";
 import Loading from "../components/Loading";
 import styled from "styled-components";
 import randomNum from "../util/randomnum";
@@ -23,19 +21,12 @@ const List = styled.ul`
   flex-wrap: wrap;
 `;
 
-function Home({ handleClick }) {
+function Home({ handleClick, data, isLoading }) {
   // 보여줄 상품 리스트 랜덤으로 선정
   const [number, setNumber] = useState("");
   // 화면 변경 표시 제거
   const [loading, setLoading] = useState(true);
 
-  const { data, isError, isLoading } = useQuery({
-    queryKey: ["products"],
-    queryFn: getList,
-  });
-  if (!isLoading) {
-    //reducer 패치 시작하기 data에 bookmark 추가하기
-  }
   useEffect(() => {
     setNumber(randomNum());
     setLoading(false);
