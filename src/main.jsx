@@ -1,5 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { RouterProvider } from "react-router-dom";
+import router from "./routers/Routers.jsx";
 import GlobalStyle from "./GlobalStyle.jsx";
 import { ThemeProvider } from "styled-components";
 import { QueryClientProvider } from "@tanstack/react-query";
@@ -12,7 +14,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        <App />
+        <RouterProvider router={router} />
       </ThemeProvider>
     </QueryClientProvider>
   </React.StrictMode>
