@@ -37,15 +37,19 @@ function Home({ handleClick, data, isLoading }) {
         {isLoading && <Loading />}
         {!isLoading && !loading && (
           <>
-            <Title>상품 리스트</Title>
-            <List>
-              {data.slice(number, number + 4).map((item) => (
-                <li key={item.id}>
-                  <Card data={item} />
-                </li>
-              ))}
-            </List>
-            <Title>북마크 리스트</Title>
+            <section>
+              <Title>상품 리스트</Title>
+              <List>
+                {data.slice(number, number + 4).map((item) => (
+                  <li key={item.id}>
+                    <Card data={item} />
+                  </li>
+                ))}
+              </List>
+            </section>
+            <section>
+              <Title>북마크 리스트</Title>
+            </section>
           </>
         )}
       </Main>

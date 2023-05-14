@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import Description from "./Description";
+import { useState } from "react";
+import Modal from "./Modal";
 
 const Article = styled.article`
   width: 264px;
@@ -17,17 +19,27 @@ const ImgBox = styled.div`
 `;
 
 export default function Card({ data }) {
+  const [modalClick, setModalClick] = useState(false);
   return (
-    <Article>
-      <ImgBox back={data.brand_image_url} image={data.image_url} />
-      <Description
-        type={data.type}
-        title={data.title ? data.title : data.brand_name}
-        follower={data.follower}
-        discount={data.discountPercentage}
-        price={data.price}
-        sub={data.sub_title}
-      />
-    </Article>
+    <>
+      <Article onClick={() => setModalClick(true)}>
+        <ImgBox back={data.brand_image_url} image={data.image_url} />
+        <Description
+          type={data.type}
+          title={data.title ? data.title : data.brand_name}
+          follower={data.follower}
+          discount={data.discountPercentage}
+          price={data.price}
+          sub={data.sub_title}
+        />
+      </Article>
+      {modalClick && (
+        <Modal
+          picture={data.brand_image_url ? data.brand_image_url : data.image_url}
+          title={data.title}
+          setModalClick={setModalClick}
+        />
+      )}
+    </>
   );
 }
