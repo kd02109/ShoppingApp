@@ -25,3 +25,14 @@
 - 헤더 컴포넌트를 작성했습니다. 최대한 피그마에서 작성한 디자인과 유사하게 만들도록 노력했습니다. 
 - icon 같은 경우 svg 와 fontawsome 아이콘을 함께 활용해서 icon을 활용했습니다.
 - 말풍선 같은 경우는 다음 블로그를 참고했습니다. [링크](https://www.ilikepixels.co.uk/bubbler/)
+
+### 4. Footer 컴포넌트 만들기
+- FooterComponent 구현. 
+
+### 5. 메인 페이지 구현하기
+#### 5-1. API 가지고 오기 
+- react-query를 활용해서 API 데이터를 불러왔습니다. 
+#### 5-2. Card 컴포넌트 만들기 
+- Card Component를 만들었습니다. API의 타입 속성에 따라 설명 모양에 차이가 있어서 Description.jsx 컴포넌트에서 분기 처리를 하여 렌더링하도록 작성했습니다. 
+#### 5-3. 모달 만들기
+- 모달 만들기는 예전에 만든 Modal component를 참고했습니다. [Modal Link](https://codesandbox.io/s/react-modal-5m26zu)
