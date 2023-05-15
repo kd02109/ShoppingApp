@@ -9,6 +9,7 @@ import NotFound from "./pages/NotFound";
 import useApi from "./hook/useApi";
 import { useDispatch, useSelector } from "react-redux";
 import { dispatchData } from "./redux/action/actions";
+import { useEffect } from "react";
 
 function App() {
   // header 클릭 적용하기
@@ -17,8 +18,9 @@ function App() {
   const { data, isLoading } = useApi();
 
   const dispatch = useDispatch();
-
-  dispatch(dispatchData(data));
+  useEffect(() => {
+    dispatch(dispatchData(data));
+  }, []);
 
   return (
     <>

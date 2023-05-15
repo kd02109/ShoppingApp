@@ -2,12 +2,16 @@ export const BOOKMARKED = "BOOKMARKED";
 export const UNBOOKMARKED = "UNBOOKMARKED";
 export const SETINITIALVALUE = "SETINITIALVALUE";
 
-const initialState = [];
+const storage = JSON.parse(window.localStorage.getItem("persist:root"));
+let bookmarkData;
+if (storage) {
+  bookmarkData = JSON.parse(storage.bookmark);
+}
+
+const initialState = storage ? { bookmark: bookmarkData } : { bookmark: [] };
 
 const bookmarkReducer = (state = initialState, action) => {
   const { type, data, id } = action;
-  console.log(action);
-
   switch (type) {
     case BOOKMARKED:
       return {
@@ -35,8 +39,12 @@ const bookmarkReducer = (state = initialState, action) => {
         }),
       };
     case SETINITIALVALUE: {
-      console.log(data);
-      return { data };
+      if (data) {
+        return { data };
+      }
+      if (!data) {
+        return state;
+      }
     }
     default:
       return state;

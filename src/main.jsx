@@ -9,18 +9,20 @@ import theme from "./theme.js";
 import { queryClient } from "./api/api.jsx";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
-import store from "./redux/reducer/store.js";
+import set from "./redux/reducer/store.js";
 //import { persistor }  from "./redux/reducer/store.js";
+
+const { store, persistor } = set;
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store}>
-    {/* <PersistGate loading={null} persistor={persistor}> */}
-    <QueryClientProvider client={queryClient}>
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <RouterProvider router={router} />
-      </ThemeProvider>
-    </QueryClientProvider>
-    {/* </PersistGate> */}
+    <PersistGate loading={null} persistor={persistor}>
+      <QueryClientProvider client={queryClient}>
+        <ThemeProvider theme={theme}>
+          <GlobalStyle />
+          <RouterProvider router={router} />
+        </ThemeProvider>
+      </QueryClientProvider>
+    </PersistGate>
   </Provider>
 );
