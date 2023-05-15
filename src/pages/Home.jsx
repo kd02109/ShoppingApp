@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
 import Loading from "../components/Loading";
 import styled from "styled-components";
 import Card from "../components/Card";
 import { useSelector } from "react-redux";
+import makeRandomNumber from "../util/makeRandomNumber";
+import { useState } from "react";
 
 const Main = styled.main`
   margin-top: 104px;
@@ -16,14 +17,14 @@ const Title = styled.h2`
 
 const List = styled.ul`
   display: flex;
-  gap: 60px;
+  gap: 24px;
   flex-wrap: wrap;
 `;
 
 function Home({ handleClick, isLoading }) {
   // 화면 변경 표시 제거
   const state = useSelector((state) => state.bookmark.data);
-
+  const [randomNumber, setrandomNumber] = useState(makeRandomNumber());
   return (
     <>
       <Main onClick={handleClick}>
@@ -33,7 +34,7 @@ function Home({ handleClick, isLoading }) {
             <section>
               <Title>상품 리스트</Title>
               <List>
-                {state.slice(0, 4).map((item) => (
+                {state.slice(randomNumber, randomNumber + 4).map((item) => (
                   <li key={item.id}>
                     <Card data={item} />
                   </li>
