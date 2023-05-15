@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Description from "./Description";
 import { useState } from "react";
 import Modal from "./Modal";
+import Bookmark from "./Bookmark";
 
 const Article = styled.article`
   width: 264px;
@@ -16,6 +17,9 @@ const ImgBox = styled.div`
   width: 264px;
   height: 210px;
   border-radius: 10px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
 `;
 
 export default function Card({ data }) {
@@ -23,7 +27,9 @@ export default function Card({ data }) {
   return (
     <>
       <Article onClick={() => setModalClick(true)}>
-        <ImgBox back={data.brand_image_url} image={data.image_url} />
+        <ImgBox back={data.brand_image_url} image={data.image_url}>
+          <Bookmark bookmark={data.bookmarked} id={data.id} />
+        </ImgBox>
         <Description
           type={data.type}
           title={data.title ? data.title : data.brand_name}

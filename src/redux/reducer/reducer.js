@@ -6,7 +6,7 @@ const bookmarkReducer = createSlice({
   reducers: {
     BOOKMARKED: (state, actions) => {
       const newState = state.map((item) => {
-        if (item.id === actions.payload.id) {
+        if (item.id === actions.payload) {
           return {
             ...item,
             bookmarked: true,
@@ -18,7 +18,7 @@ const bookmarkReducer = createSlice({
     },
     UNBOOKMARKED: (state, actions) => {
       const newState = state.map((item) => {
-        if (item.id === actions.payload.id) {
+        if (item.id === actions.payload) {
           return {
             ...item,
             bookmarked: false,
@@ -28,11 +28,22 @@ const bookmarkReducer = createSlice({
       });
       return newState;
     },
+    SETINITIALVALUE: (state, actions) => {
+      console.log(state);
+      if (state.length === 0) {
+        const newState = actions.payload;
+        console.log(newState);
+        return newState;
+      } else {
+        return state;
+      }
+    },
   },
 });
 
 const store = configureStore({ reducer: bookmarkReducer.reducer });
 
-export const { BOOKMARKED, UNBOOKMARKED, ALLDATA } = bookmarkReducer.actions;
+export const { BOOKMARKED, UNBOOKMARKED, SETINITIALVALUE } =
+  bookmarkReducer.actions;
 
 export default store;

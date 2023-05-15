@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import Loading from "../components/Loading";
 import styled from "styled-components";
-import randomNum from "../util/randomnum";
 import Card from "../components/Card";
+import { useSelector } from "react-redux";
 
 const Main = styled.main`
   margin-top: 104px;
@@ -21,26 +21,20 @@ const List = styled.ul`
   flex-wrap: wrap;
 `;
 
-function Home({ handleClick, data, isLoading }) {
-  // 보여줄 상품 리스트 랜덤으로 선정
-  const [number, setNumber] = useState("");
+function Home({ handleClick, isLoading }) {
   // 화면 변경 표시 제거
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    setNumber(randomNum());
-    setLoading(false);
-  }, []);
+  const state = useSelector((state) => state);
+  console.log(state);
   return (
     <>
       <Main onClick={handleClick}>
         {isLoading && <Loading />}
-        {!isLoading && !loading && (
+        {!isLoading && (
           <>
             <section>
               <Title>상품 리스트</Title>
               <List>
-                {data.slice(number, number + 4).map((item) => (
+                {state.slice(0, 4).map((item) => (
                   <li key={item.id}>
                     <Card data={item} />
                   </li>
