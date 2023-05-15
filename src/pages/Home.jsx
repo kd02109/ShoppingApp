@@ -16,8 +16,7 @@ const Title = styled.h2`
 
 const List = styled.ul`
   display: flex;
-  gap: 24px;
-  justify-content: space-between;
+  gap: 60px;
   flex-wrap: wrap;
 `;
 
@@ -43,6 +42,16 @@ function Home({ handleClick, isLoading }) {
             </section>
             <section>
               <Title>북마크 리스트</Title>
+              <List>
+                {state
+                  .filter((item) => item.bookmarked)
+                  .slice(0, 4)
+                  .map((item) => (
+                    <li key={item.id}>
+                      <Card data={item} />
+                    </li>
+                  ))}
+              </List>
             </section>
           </>
         )}
