@@ -14,6 +14,7 @@ const Container = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
+  margin-bottom: 26.5px;
 `;
 const List = styled.ul`
   display: flex;
@@ -39,6 +40,38 @@ function ProductLists({ handleClick }) {
                 <Card data={item} />
               </li>
             ))}
+          {numState === 1 &&
+            state
+              .filter((item) => item.type === "Product")
+              .map((item) => (
+                <li key={item.id}>
+                  <Card data={item} />
+                </li>
+              ))}
+          {numState === 2 &&
+            state
+              .filter((item) => item.type === "Category")
+              .map((item) => (
+                <li key={item.id}>
+                  <Card data={item} />
+                </li>
+              ))}
+          {numState === 3 &&
+            state
+              .filter((item) => item.type === "Exhibition")
+              .map((item) => (
+                <li key={item.id}>
+                  <Card data={item} />
+                </li>
+              ))}
+          {numState === 4 &&
+            state
+              .filter((item) => item.type === "Brand")
+              .map((item) => (
+                <li key={item.id}>
+                  <Card data={item} />
+                </li>
+              ))}
         </List>
       </section>
     </Main>
