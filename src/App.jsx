@@ -6,18 +6,13 @@ import ProductLists from "./pages/ProductLists";
 import Bookmark from "./pages/Bookmark";
 import useHeaderClick from "./hook/useHeaderClick";
 import NotFound from "./pages/NotFound";
-import { useQuery } from "@tanstack/react-query";
-import getList from "./api/api";
+import useApi from "./hook/useApi";
 
 function App() {
   // header 클릭 적용하기
   const { click, setClick, handleClick } = useHeaderClick();
   //api 불러오기
-  const { data, isError, isLoading } = useQuery({
-    queryKey: ["products"],
-    queryFn: getList,
-  });
-
+  const { data, isLoading } = useApi();
   return (
     <>
       <Header click={click} setClick={setClick} handleClick={handleClick} />
