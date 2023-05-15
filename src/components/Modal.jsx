@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Xmark from "./Xmark";
+import Bookmark from "./Bookmark";
 
 const ModalBackGround = styled.div`
   position: fixed;
@@ -28,6 +29,8 @@ const ModalImage = styled.div`
 
   div {
     margin: 10px;
+    display: flex;
+    align-items: center;
     h1 {
       color: #ffffff;
       text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
@@ -37,7 +40,7 @@ const ModalImage = styled.div`
   }
 `;
 
-export default function Modal({ title, picture, setModalClick }) {
+export default function Modal({ title, picture, setModalClick, bookmark, id }) {
   return (
     <ModalBackGround
       onClick={() => {
@@ -47,6 +50,7 @@ export default function Modal({ title, picture, setModalClick }) {
       <ModalImage imgSrc={picture} onClick={(event) => event.stopPropagation()}>
         <Xmark setModalClick={setModalClick} />
         <div>
+          <Bookmark bookmark={bookmark} id={id} />
           <h1>{title}</h1>
         </div>
       </ModalImage>
