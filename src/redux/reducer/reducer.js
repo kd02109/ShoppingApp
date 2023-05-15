@@ -8,11 +8,11 @@ if (storage) {
   bookmarkData = JSON.parse(storage.bookmark);
 }
 
-const initialState = storage ? { data: bookmarkData } : { data: [] };
+const initialState = storage ? bookmarkData : [];
 
 const bookmarkReducer = (state = initialState, action) => {
   const { type, data, id } = action;
-
+  console.log(state);
   switch (type) {
     case BOOKMARKED: {
       console.log(state);
@@ -28,17 +28,16 @@ const bookmarkReducer = (state = initialState, action) => {
     }
 
     case UNBOOKMARKED:
-      return {
-        data: state.map((item) => {
-          if (item.id === id) {
-            return {
-              ...item,
-              bookmarked: false,
-            };
-          }
-          return item;
-        }),
-      };
+      return state.map((item) => {
+        if (item.id === id) {
+          return {
+            ...item,
+            bookmarked: false,
+          };
+        }
+        return item;
+      });
+
     case SETINITIALVALUE: {
       if (data) {
         return data;
