@@ -42,7 +42,7 @@ const DropBox = styled.div`
 
 function Dropdown() {
   return (
-    <DropBox onClick={(event) => event.stopPropagation()}>
+    <DropBox>
       <div>
         <span>ΟΟΟ님, 안녕하세요!</span>
       </div>
