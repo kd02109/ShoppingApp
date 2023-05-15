@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { BOOKMARKED, UNBOOKMARKED } from "../redux/reducer/reducer";
+import { dispatchBookmark, dispatchUnBookmark } from "../redux/action/actions";
 
 const Svg = styled.svg`
   cursor: pointer;
@@ -14,9 +14,9 @@ export default function Bookmark({ bookmark, id }) {
   const handleBookmark = (event) => {
     event.stopPropagation();
     if (bookmark) {
-      dispatch(UNBOOKMARKED(id));
+      dispatch(dispatchUnBookmark(id));
     } else {
-      dispatch(BOOKMARKED(id));
+      dispatch(dispatchBookmark(id));
     }
   };
   return (

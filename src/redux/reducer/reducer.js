@@ -1,49 +1,46 @@
-import { createSlice, configureStore } from "@reduxjs/toolkit";
+export const BOOKMARKED = "BOOKMARKED";
+export const UNBOOKMARKED = "UNBOOKMARKED";
+export const SETINITIALVALUE = "SETINITIALVALUE";
 
-const bookmarkReducer = createSlice({
-  name: "bookmarkReducer",
-  initialState: [],
-  reducers: {
-    BOOKMARKED: (state, actions) => {
-      const newState = state.map((item) => {
-        if (item.id === actions.payload) {
-          return {
-            ...item,
-            bookmarked: true,
-          };
-        }
-        return item;
-      });
-      return newState;
-    },
-    UNBOOKMARKED: (state, actions) => {
-      const newState = state.map((item) => {
-        if (item.id === actions.payload) {
-          return {
-            ...item,
-            bookmarked: false,
-          };
-        }
-        return item;
-      });
-      return newState;
-    },
-    SETINITIALVALUE: (state, actions) => {
-      console.log(state);
-      if (state.length === 0) {
-        const newState = actions.payload;
-        console.log(newState);
-        return newState;
-      } else {
-        return state;
-      }
-    },
-  },
-});
+const initialState = [];
 
-const store = configureStore({ reducer: bookmarkReducer.reducer });
+const bookmarkReducer = (state = initialState, action) => {
+  const { type, data, id } = action;
+  console.log(action);
 
-export const { BOOKMARKED, UNBOOKMARKED, SETINITIALVALUE } =
-  bookmarkReducer.actions;
+  switch (type) {
+    case BOOKMARKED:
+      return {
+        data: state.data.map((item) => {
+          if (item.id === id) {
+            return {
+              ...item,
+              bookmarked: true,
+            };
+          }
+          return item;
+        }),
+      };
 
-export default store;
+    case UNBOOKMARKED:
+      return {
+        data: state.data.map((item) => {
+          if (item.id === id) {
+            return {
+              ...item,
+              bookmarked: false,
+            };
+          }
+          return item;
+        }),
+      };
+    case SETINITIALVALUE: {
+      console.log(data);
+      return { data };
+    }
+    default:
+      return state;
+  }
+};
+
+export default bookmarkReducer;

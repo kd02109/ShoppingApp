@@ -8,8 +8,7 @@ import useHeaderClick from "./hook/useHeaderClick";
 import NotFound from "./pages/NotFound";
 import useApi from "./hook/useApi";
 import { useDispatch, useSelector } from "react-redux";
-import { SETINITIALVALUE } from "./redux/reducer/reducer";
-import { useEffect } from "react";
+import { dispatchData } from "./redux/action/actions";
 
 function App() {
   // header 클릭 적용하기
@@ -18,9 +17,8 @@ function App() {
   const { data, isLoading } = useApi();
 
   const dispatch = useDispatch();
-  const state = useSelector((state) => state);
 
-  dispatch(SETINITIALVALUE(data));
+  dispatch(dispatchData(data));
 
   return (
     <>

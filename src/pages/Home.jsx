@@ -23,8 +23,8 @@ const List = styled.ul`
 
 function Home({ handleClick, isLoading }) {
   // 화면 변경 표시 제거
-  const state = useSelector((state) => state);
-  console.log(state);
+  const state = useSelector((state) => state.bookmark.data);
+
   return (
     <>
       <Main onClick={handleClick}>
