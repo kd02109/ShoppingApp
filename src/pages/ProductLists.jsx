@@ -1,5 +1,9 @@
+import styled from "styled-components";
+
+const Main = styled.main``;
+
 function ProductLists() {
-  return <div>product list</div>;
+  return <Main>product list</Main>;
 }
 
 export default ProductLists;
