@@ -10,8 +10,13 @@
 
 - 크게 3개의 페이지로 구성됩니다. Home, Bookmark, ProductList입니다.
 
-## Router 설정
+### 1. Router 설정
 
 - 기존 CRA로 형성한 react 템플릿에서는 BrowserRouter로 감싸는 형태로 작업하였을 때 정상적으로 출력이 되었지만, vite 템플릿에서는 작동이 되지 않아서 공식 홈페이지 듀토리얼을 참고하면서 다시 진행하였습니다.
 - [공식 블로그](https://reactrouter.com/en/main/start/tutorial)
   - 4개의 페이지를 만들어서 기본 router 구성 Home, ProductList, Bookmark, NotFound
+
+### 2. 기본 CSS 설정
+- styledComponent의 전역 스타일 설정하기, `createGlobalStyle`를 활용했습니다. 그리고 reset css를 적용했습니다. [reset css](https://meyerweb.com/eric/tools/css/reset/)
+- styledComponent Theme을 활용해서 기본적으로 사용하는 폰트의 크기, 각 margin 값, color를 설정했습니다. 
+- reset css로 인해 변화된 NotFound Page의 css를 수정했습니다.

@@ -9,10 +9,13 @@ const ErrorDiv = styled.div`
   justify-content: center;
   align-items: center;
   h1 {
-    font-size: 40px;
+    font-size: ${(props) => props.theme.title};
+    margin-bottom: 20px;
+    color: #e84118;
   }
   p {
     font-size: 20px;
+    margin-bottom: 20px;
   }
 `;
 
@@ -21,7 +24,6 @@ function NotFound() {
   return (
     <ErrorDiv>
       <h1>404 Not Found</h1>
-      <p>Sorry, an unexpected error has occurred.</p>
       <p>죄송합니다. 예상치 못한 에러가 발생했습니다.</p>
       <p>
         <i>{error.statusText || error.message}</i>
