@@ -9,3 +9,9 @@
 ## 구현 요소
 
 - 크게 3개의 페이지로 구성됩니다. Home, Bookmark, ProductList입니다.
+
+## Router 설정
+
+- 기존 CRA로 형성한 react 템플릿에서는 BrowserRouter로 감싸는 형태로 작업하였을 때 정상적으로 출력이 되었지만, vite 템플릿에서는 작동이 되지 않아서 공식 홈페이지 듀토리얼을 참고하면서 다시 진행하였습니다.
+- [공식 블로그](https://reactrouter.com/en/main/start/tutorial)
+  - 4개의 페이지를 만들어서 기본 router 구성 Home, ProductList, Bookmark, NotFound
