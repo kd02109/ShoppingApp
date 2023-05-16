@@ -3,12 +3,50 @@
 ## 개요
 
 - 장바구니 기능이 있는 상품페이지를 구현합니다. 기본적인 디자인은 해당 링크에서 확인할 수 있습니다. 해당 프로젝트의 목적은 주어진 디자인에 맞추어 기능을 구현하는 방법론을 학습합니다.
-- 에자일 방법론 중 스크럼 방법을 활용해서 진행합니다.
+- 에자일 방법론 중 스크럼 방법을 활용해서 진행합니다. github의 프로젝트를 활용했습니다. [링크](https://github.com/users/kd02109/projects/1/views/1)
 - [디자인 링크](https://www.figma.com/file/TfWAvMXegGEJiS3etqOSfs/FE-S4-project?type=design&node-id=3%3A77&t=3LJWT6Y8o2tLK7f2-1)
 
-## 구현 요소
+## 구현 요소(명세서)
 
-- 크게 3개의 페이지로 구성됩니다. Home, Bookmark, ProductList입니다.
+### Main page(메인 페이지)
+
+- path: /
+- Header와 Footer를 갖고 있으며, 해당 GNB와 Footer는 어느 페이지를 가더라도 항상 존재해야 한다.
+  - Header 내 햄버거 버튼 존재, 햄버거 버튼 펼칠 시 내부에
+      - Header는 페이지 내 스크롤이 발생하더라도 항상 상단에 붙어있어야 한다.
+      - 메인로고 → 클릭하면 / 페이지로 이동
+      - 햄버거 버튼
+          - 상품리스트 → 클릭하면 /products/list 페이지로 이동
+          - 북마크페이지 → 클릭하면 /bookmark 페이지로 이동
+  - Footer
+      - 일련의 텍스트 정보들
+- 해당 메인페이지에서는
+    - 모든 타입의 상품 정보를 4개 보여준다 (필터기능 없이)
+      - 보여지는 상품의 타입은 혼합되어 있을 수 있다 (상품, 카테고리, 기획전, 브랜드)
+    - 모든 타입의 북마크 된 상품 정보를 4개 보여준다 (필터기능 없이)
+      - 보여지는 상품의 타입은 혼합되어 있을 수 있다 (상품, 카테고리, 기획전, 브랜드)
+<hr/>
+
+### Products list page(상품리스트 페이지)
+
+- path: /products/list
+- 서버에서 제공하는 상품 리스트들을 확인할 수 있는 페이지이며   
+  - 무한 스크롤을 통해 상품들을 계속 보여줄 수 있어야 한다 .무한스크롤은 쿼리파라미터를 통한 매번 api call이 아닌, 최초 1번 api call을 통해 전체 데이터를 받아온 후 적용합니다.
+- 상품은 각 상품별로 타입이 존재한다. (상품, 카테고리, 기획전, 브랜드)
+- 상단의 필터 버튼을 통해 상품을 타입별로 조회해 보여줄 수 있어야 한다.
+- 각 상품을 클릭하면 해당 상품의 사진을 보여주는 모달을 띄울 수 있어야 한다.
+- 각 상품에 존재하는 북마크 버튼을 눌러 원하는 상품을 북마크 할 수 있어야 한다.
+- 이미 북마크 된 상품의 경우, 북마크 버튼에 표시를 해주어야 하며 다시 한 번 북마크 버튼을 클릭 시 해당 상품을 북마크에서 삭제한다.
+- 북마크 버튼을 클릭하여 북마크에 추가 할 때 그리고 삭제할 때는 사용자에게 알림 토스트가 표시되어야 한다.
+<hr/>
+
+### Bookmark page(북마크 페이지)
+
+- path: /bookmark
+- 사용자가 북마크 한 상품 들을 확인할 수 있는 페이지로 무한 스크롤이 가능해야 한다.
+- 상품리스트 페이지에 존재하는 필터링 버튼과 같은 버튼을 이용해 상품을 타입별로 필터해 보여줄 수 있어야 한다.
+
+# 진행 과정 정리 
 
 ### 1. Router 설정
 
@@ -16,7 +54,137 @@
 - [공식 블로그](https://reactrouter.com/en/main/start/tutorial)
   - 4개의 페이지를 만들어서 기본 router 구성 Home, ProductList, Bookmark, NotFound
   - BrowserRouter와 createBrowserRouter의 차이에 대해서 이해할 수 있었다. createBrowserRouter에서는 DataRoiter를 제공하기 때문에 더 많은 기능을 사용할 수 있었다. (ex. data APIs) 따라서 NotFound 페이지에서 사용하고 있는 useRouteError 훅은 createBrowserRouter에서만 사용가능하였다. [링크](https://reactrouter.com/en/6.11.1/routers/picking-a-router)
+- App을 절대경로로 설정하여 Router 작업을 진행하였습니다. 초기에 createBrowserRouter에서 제공하는 DataAPIs가 매우 매력적으로 다가왔습니다. 특히 DataAPIs가 제공하는 여러 훅중에서 useRouteError가 매력적이었습니다. 설정에 따라서 router 애러 뿐만 아니라, 다른 애러도 캡쳐해서 페이지를 자동으로 전환 해주는 기능이 인상깊었습니다. 이러한 APU를 사용하기 위해서 createBrowserRouter를 적용하였습니다. 
+- 여기서 문제는 createBrowserRouter를 사용한 경우 Outlet과 함께 사용되는데, 저는 각각의 페이지에 prop전달을 하고 싶어서 Routes와 Route를 활용했습니다.
+```js
+// ./routers/Routers.jsx
+import { createBrowserRouter } from "react-router-dom";
+import NotFound from "../pages/NotFound";
+import ProductLists from "../pages/ProductLists";
+import Bookmark from "../pages/Bookmark";
+import App from "../App";
+import Home from "../pages/Home";
 
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/products/list",
+        element: <ProductLists />,
+      },
+      {
+        path: "/bookmark",
+        element: <Bookmark />,
+      },
+    ],
+    errorElement: <NotFound />,
+  },
+]);
+
+export default router;
+
+```
+
+```js
+// ./App.jsx
+import { Routes, Route } from "react-router-dom";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Home from "./pages/Home";
+import ProductLists from "./pages/ProductLists";
+import Bookmark from "./pages/Bookmark";
+import useHeaderClick from "./hook/useHeaderClick";
+import NotFound from "./pages/NotFound";
+import useApi from "./hook/useApi";
+import { useDispatch } from "react-redux";
+import { dispatchData } from "./redux/action/actions";
+import { useEffect, useState } from "react";
+import Toast from "./components/Toast";
+
+function App() {
+  // header 클릭 적용하기
+  const { click, setClick, handleClick } = useHeaderClick();
+  //api 불러오기
+  const { data, isLoading } = useApi();
+
+  //Toast 조정
+  const [toast, setToast] = useState(false);
+  const [toastBookmar, setToastBookmark] = useState(false);
+
+  useEffect(() => {
+    const id = setTimeout(() => {
+      setToast(false);
+    }, 1000);
+    return () => {
+      clearTimeout(id);
+    };
+  }, [toast, toastBookmar]);
+  //query 데이터 redux에 저장하기
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(dispatchData(data));
+  }, []);
+
+  return (
+    <>
+      <Header click={click} setClick={setClick} handleClick={handleClick} />
+      <Routes>
+        <Route
+          path="*"
+          element={
+            <Home
+              handleClick={handleClick}
+              isLoading={isLoading}
+              setToast={setToast}
+              setToastBookmark={setToastBookmark}
+            />
+          }
+        />
+        <Route
+          path="/products/list"
+          element={
+            <ProductLists
+              handleClick={handleClick}
+              setToast={setToast}
+              setToastBookmark={setToastBookmark}
+            />
+          }
+        />
+        <Route
+          path="/bookmark"
+          element={
+            <Bookmark
+              handleClick={handleClick}
+              setToast={setToast}
+              setToastBookmark={setToastBookmark}
+            />
+          }
+        />
+        <Route path="/*" element={<NotFound />} />
+      </Routes>
+      {toast && <Toast toastBookmar={toastBookmar} />}
+      <Footer handleClick={handleClick} />
+    </>
+  );
+}
+
+export default App;
+
+```
+
+💣 다음과 같이 설정 하였을 때, 콘솔에서 다음과 같은 경고창을 보여지게 됩니다. 
+```
+history.ts:487 You rendered descendant <Routes> (or called `useRoutes()`) at "/" (under <Route path="/">) but the parent route path has no trailing "*". This means if you navigate deeper, the parent won't match anymore and therefore the child routes will never render.
+
+Please change the parent <Route path="/"> to <Route path="*">.
+```
+- 제시한 해결방법 처럼 path를 수정한 상태에서도 이와 같은 문제가 발생하고 있습니다. createBrowserRouter와 Routes를 혼합해서 사용한 문제 인듯 하여, 하나의 방식만 사용하도록 수정이 필요할 것 같습니다.
 
 ### 2. 기본 CSS 설정
 - styledComponent의 전역 스타일 설정하기, `createGlobalStyle`를 활용했습니다. 그리고 reset css를 적용했습니다. [reset css](https://meyerweb.com/eric/tools/css/reset/)
@@ -27,6 +195,7 @@
 - 헤더 컴포넌트를 작성했습니다. 최대한 피그마에서 작성한 디자인과 유사하게 만들도록 노력했습니다. 
 - icon 같은 경우 svg 와 fontawsome 아이콘을 함께 활용해서 icon을 활용했습니다.
 - 말풍선 같은 경우는 다음 블로그를 참고했습니다. [링크](https://www.ilikepixels.co.uk/bubbler/)
+- 헤더 컴포넌트의 햄버거를 클릭하면 Dropdown 형태로 메뉴가 등장해야 합니다. 이때 햄버거 버튼이 클릭 되어야 햄버거가 사라지게 되는 형태가 불편하다고 느꼈습니다. 그래서 전역에서 state를 감지해서 사용할 수 있도록 수정했습니다. component hook useHeaderClick을 만들어서 App 상에서 state를 관리하도록 하였습니다. 햄버거 버튼이 클릭 되어 DropDown 컴포넌트가 보이는 상태라면, 어떤 화면을 클릭해도 다시 닫히도록 구성했습니다.
 
 ### 4. Footer 컴포넌트 만들기
 - FooterComponent 구현. 
@@ -34,9 +203,12 @@
 ### 5. 메인 페이지 구현하기
 #### 5-1. API 가지고 오기 
 - react-query를 활용해서 API 데이터를 불러왔습니다. 
+- 초기에는 api 함수만을 따로 분리하였는데, 데이터를 불러와서 결과를 받는 hook 또한 분리하는 것이 좋을 듯 하여 useApi component hook을 만들었습니다.
 #### 5-2. Card 컴포넌트 만들기 
 - Card Component를 만들었습니다. API의 타입 속성에 따라 설명 모양에 차이가 있어서 Description.jsx 컴포넌트에서 분기 처리를 하여 렌더링하도록 작성했습니다. 
+
 - 가격과 follower 같은 경우는 쉼표 처리를 해주어야 하기 때문에 정규표현식을 활용했습니다. `toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')`
+
 #### 5-3. 모달 만들기
 - 모달 만들기는 예전에 만든 Modal component를 참고했습니다. [Modal Link](https://codesandbox.io/s/react-modal-5m26zu)
 
@@ -53,7 +225,10 @@
 
 #### 6.3 redux-persist 적용하기 [참고](https://velog.io/@_jouz_ryul/LocalStorage-SessiongStorage-%EA%B7%B8%EB%A6%AC%EA%B3%A0-Redux-Persist)
 - redux 과련 라이브러리 중에서 local storage를 적용해주는 라이브러리를 사용해서 코드를 작성했다. 이때 redux-toolkit으로 작성한 코드를 적용하는 과정에서 애러가 지속적으로 발생해, toolkit을 활용하지 않고 일반 redux와 react-redux를 활용하는 코드로 수정하였다.(아직 toolkit에 익숙하지 않아 어디서 발생하는 오류인지 찾을 수 없어 코드를 전체적으로 수정했다.!) 추가적으로 localStorage에 저장된 데이터가 있다면, react-query 데이터를 활용하지 않고, localStorage 데이터를 활용하도록 initialvalue를 수정하였다. 
-- 정상 작동을 테스트 해보니 작동은 정상적으로 하였다. 다만 localStorage를 적용하니 메인 페이지의 상품페이지가 고정된 상품만 보여주게 되어 이를 수정하기 위해 random으로 숫자를 뽑는 함수를 작성했다. 
+
+- 정상 작동을 테스트 해보니 작동은 정상적으로 하였다. 다만 localStorage를 적용하니 메인 페이지의 상품페이지가 고정된 상품만 보여주게 되어 이를 수정하기 위해 random으로 숫자를 뽑는 함수를 작성했다.
+
+- redux에서 actions을 받고 reducer을 하는 과정에서 store에 저장된 데이터가 변경되어 특정 과정에서 애러가 발생하는 것을 확인했습니다. 이를 수정하기 위해서 redux-persist가 저장하는 데이터 형태로 state의 데이터 형태를 수정하였으며, 각각의 action이 반환하는 데이터의 형태도 일치시켰습니다.
 
 ### 7. filter Component
 - filter 버튼은 고정된 형태입니다. 데이터가 변화될 일이 없기 때문에, index로 key 값을 주어도 문제가 없었습니다. 
