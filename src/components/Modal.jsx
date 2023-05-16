@@ -40,7 +40,15 @@ const ModalImage = styled.div`
   }
 `;
 
-export default function Modal({ title, picture, setModalClick, bookmark, id }) {
+export default function Modal({
+  title,
+  picture,
+  setModalClick,
+  bookmark,
+  id,
+  setToast,
+  setToastBookmark,
+}) {
   return (
     <ModalBackGround
       onClick={() => {
@@ -50,7 +58,12 @@ export default function Modal({ title, picture, setModalClick, bookmark, id }) {
       <ModalImage imgSrc={picture} onClick={(event) => event.stopPropagation()}>
         <Xmark setModalClick={setModalClick} />
         <div>
-          <Bookmark bookmark={bookmark} id={id} />
+          <Bookmark
+            bookmark={bookmark}
+            id={id}
+            setToast={setToast}
+            setToastBookmark={setToastBookmark}
+          />
           <h1>{title}</h1>
         </div>
       </ModalImage>

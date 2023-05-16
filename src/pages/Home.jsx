@@ -21,7 +21,7 @@ const List = styled.ul`
   flex-wrap: wrap;
 `;
 
-function Home({ handleClick, isLoading }) {
+function Home({ handleClick, isLoading, setToast, setToastBookmark }) {
   // 화면 변경 표시 제거
   const state = useSelector((state) => state.bookmark);
   const [randomNumber, setrandomNumber] = useState(makeRandomNumber());
@@ -36,7 +36,11 @@ function Home({ handleClick, isLoading }) {
               <List>
                 {state.slice(randomNumber, randomNumber + 4).map((item) => (
                   <li key={item.id}>
-                    <Card data={item} />
+                    <Card
+                      data={item}
+                      setToast={setToast}
+                      setToastBookmark={setToastBookmark}
+                    />
                   </li>
                 ))}
               </List>
@@ -49,7 +53,11 @@ function Home({ handleClick, isLoading }) {
                   .slice(0, 4)
                   .map((item) => (
                     <li key={item.id}>
-                      <Card data={item} />
+                      <Card
+                        data={item}
+                        setToast={setToast}
+                        setToastBookmark={setToastBookmark}
+                      />
                     </li>
                   ))}
               </List>
