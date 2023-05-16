@@ -22,7 +22,7 @@ const List = styled.ul`
   flex-wrap: wrap;
 `;
 
-function ProductLists({ handleClick }) {
+function ProductLists({ handleClick, setToast, setToastBookmark }) {
   const [numState, setNumState] = useState(0);
   const state = useSelector((state) => state.bookmark);
   console.log(state);
@@ -37,7 +37,11 @@ function ProductLists({ handleClick }) {
           {numState === 0 &&
             state.map((item) => (
               <li key={item.id}>
-                <Card data={item} />
+                <Card
+                  data={item}
+                  setToast={setToast}
+                  setToastBookmark={setToastBookmark}
+                />
               </li>
             ))}
           {numState === 1 &&
@@ -45,7 +49,11 @@ function ProductLists({ handleClick }) {
               .filter((item) => item.type === "Product")
               .map((item) => (
                 <li key={item.id}>
-                  <Card data={item} />
+                  <Card
+                    data={item}
+                    setToast={setToast}
+                    setToastBookmark={setToastBookmark}
+                  />
                 </li>
               ))}
           {numState === 2 &&
@@ -53,7 +61,11 @@ function ProductLists({ handleClick }) {
               .filter((item) => item.type === "Category")
               .map((item) => (
                 <li key={item.id}>
-                  <Card data={item} />
+                  <Card
+                    data={item}
+                    setToast={setToast}
+                    setToastBookmark={setToastBookmark}
+                  />
                 </li>
               ))}
           {numState === 3 &&
@@ -61,7 +73,11 @@ function ProductLists({ handleClick }) {
               .filter((item) => item.type === "Exhibition")
               .map((item) => (
                 <li key={item.id}>
-                  <Card data={item} />
+                  <Card
+                    data={item}
+                    setToast={setToast}
+                    setToastBookmark={setToastBookmark}
+                  />
                 </li>
               ))}
           {numState === 4 &&
@@ -69,7 +85,11 @@ function ProductLists({ handleClick }) {
               .filter((item) => item.type === "Brand")
               .map((item) => (
                 <li key={item.id}>
-                  <Card data={item} />
+                  <Card
+                    data={item}
+                    setToast={setToast}
+                    setToastBookmark={setToastBookmark}
+                  />
                 </li>
               ))}
         </List>
