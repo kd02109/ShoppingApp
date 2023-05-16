@@ -23,7 +23,7 @@ const List = styled.ul`
 
 function Home({ handleClick, isLoading }) {
   // 화면 변경 표시 제거
-  const state = useSelector((state) => state.bookmark.data);
+  const state = useSelector((state) => state.bookmark);
   const [randomNumber, setrandomNumber] = useState(makeRandomNumber());
   return (
     <>

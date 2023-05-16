@@ -44,6 +44,8 @@ export default function Card({ data }) {
           picture={data.brand_image_url ? data.brand_image_url : data.image_url}
           title={data.title}
           setModalClick={setModalClick}
+          bookmark={data.bookmarked}
+          id={data.id}
         />
       )}
     </>

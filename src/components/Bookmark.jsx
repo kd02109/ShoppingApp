@@ -8,8 +8,6 @@ const Svg = styled.svg`
 `;
 
 export default function Bookmark({ bookmark, id }) {
-  console.log(bookmark);
-
   const dispatch = useDispatch();
   const handleBookmark = (event) => {
     event.stopPropagation();

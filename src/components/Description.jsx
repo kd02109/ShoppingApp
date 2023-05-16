@@ -26,7 +26,7 @@ const SubTitle = styled(Title)`
 
 const LeftTitle = styled(Title)`
   text-align: end;
-  color: ${(props) => (props.color ? props.theme.percentColor : black)};
+  color: ${(props) => (props.color ? props.theme.percentColor : "black")};
 `;
 
 const LeftSub = styled(SubTitle)`
