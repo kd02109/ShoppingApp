@@ -26,6 +26,7 @@ const SubTitle = styled(Title)`
 
 const LeftTitle = styled(Title)`
   text-align: end;
+  color: ${(props) => (props.color ? props.theme.percentColor : black)};
 `;
 
 const LeftSub = styled(SubTitle)`
@@ -47,8 +48,10 @@ export default function Description({
           <Title>{title}</Title>
         </RightBox>
         <LeftBox>
-          <LeftTitle>{discount}%</LeftTitle>
-          <LeftSub>{price}원</LeftSub>
+          <LeftTitle color="percent">{discount}%</LeftTitle>
+          <LeftSub>
+            {price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원
+          </LeftSub>
         </LeftBox>
       </Container>
     );
@@ -70,7 +73,9 @@ export default function Description({
         </RightBox>
         <LeftBox>
           <LeftTitle>관심고객수</LeftTitle>
-          <LeftSub>{follower}</LeftSub>
+          <LeftSub>
+            {follower.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+          </LeftSub>
         </LeftBox>
       </Container>
     );

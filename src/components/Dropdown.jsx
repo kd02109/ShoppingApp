@@ -13,6 +13,7 @@ const DropBox = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  z-index: 10;
   &::after {
     content: "";
     position: absolute;
