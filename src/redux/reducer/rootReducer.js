@@ -4,6 +4,7 @@ import store from "./store";
 import { combineReducers } from "redux";
 import bookmarkReducer from "./reducer";
 import hambegerReducer from "./hambegeReducer";
+import toastReducer from "./toastReducer";
 
 const persistConfig = {
   // 새로운 persist config를 선언해준다.
@@ -20,6 +21,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   bookmark: bookmarkReducer,
   hamberger: hambegerReducer,
+  toast: toastReducer,
 });
 
 export default persistReducer(persistConfig, rootReducer);

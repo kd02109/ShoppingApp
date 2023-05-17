@@ -10,16 +10,11 @@ import {
 } from "../redux/action/actions";
 
 const Head = styled.header`
-  width: 90%;
   height: 80px;
-  padding-left: ${(props) => props.theme.margin.spacing11};
-  padding-right: ${(props) => props.theme.margin.spacing11};
+  padding: 0px ${(props) => props.theme.margin.spacing11};
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: absolute;
-  top: 0;
-  left: 0;
   box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.1);
 `;
 

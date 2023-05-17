@@ -8,7 +8,7 @@ import useClick from "../hook/useClick";
 import useApi from "../hook/useApi";
 
 const Main = styled.main`
-  margin-top: 104px;
+  margin-top: 24px;
   margin-left: ${(props) => props.theme.margin.spacing11};
   margin-right: ${(props) => props.theme.margin.spacing11};
 `;
@@ -19,8 +19,10 @@ const Title = styled.h2`
 
 const List = styled.ul`
   display: flex;
-  gap: 24px;
   flex-wrap: wrap;
+  & > :not(:last-child) {
+    margin-right: 20px;
+  }
 `;
 
 const CHOOSENUMBER = 4;

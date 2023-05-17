@@ -6,7 +6,7 @@ import Card from "../components/Card";
 import useClick from "../hook/useClick";
 
 const Main = styled.main`
-  margin-top: 104px;
+  margin-top: 24px;
   margin-left: ${(props) => props.theme.margin.spacing11};
   margin-right: ${(props) => props.theme.margin.spacing11};
 `;

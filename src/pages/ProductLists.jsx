@@ -8,7 +8,7 @@ import { useInView } from "react-intersection-observer";
 import useClick from "../hook/useClick";
 
 const Main = styled.main`
-  margin-top: 104px;
+  margin-top: 24px;
   margin-left: ${(props) => props.theme.margin.spacing11};
   margin-right: ${(props) => props.theme.margin.spacing11};
 `;
@@ -21,7 +21,7 @@ const Container = styled.div`
 `;
 const List = styled.ul`
   display: flex;
-  gap: 24px;
+  justify-content: space-around;
   flex-wrap: wrap;
 `;
 
@@ -32,7 +32,6 @@ function ProductLists({ setToast, setToastBookmark }) {
   // 무한 스크롤 구현
   const [dataNum, setDataNum] = useState(30);
   const [ref, inView] = useInView();
-  console.log(inView);
 
   useEffect(() => {
     if (inView && dataNum <= 120) {
