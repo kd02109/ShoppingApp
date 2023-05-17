@@ -31,8 +31,8 @@ export default function Card({ data, setToast, setToastBookmark }) {
           <Bookmark
             bookmark={data.bookmarked}
             id={data.id}
-            setToast={setToast}
-            setToastBookmark={setToastBookmark}
+            /* setToast={setToast}
+            setToastBookmark={setToastBookmark} */
           />
         </ImgBox>
         <Description
@@ -51,8 +51,8 @@ export default function Card({ data, setToast, setToastBookmark }) {
           setModalClick={setModalClick}
           bookmark={data.bookmarked}
           id={data.id}
-          setToast={setToast}
-          setToastBookmark={setToastBookmark}
+          /*           setToast={setToast}
+          setToastBookmark={setToastBookmark} */
         />
       )}
     </>
