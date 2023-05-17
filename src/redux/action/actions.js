@@ -1,4 +1,5 @@
 import { HAMBEGER_CLOSE, HAMBEGER_OPEN } from "../reducer/hambegeReducer";
+import { MODAL_CLOSED, MODAL_OPENED } from "../reducer/modalReducer";
 import { BOOKMARKED, SETINITIALVALUE, UNBOOKMARKED } from "../reducer/reducer";
 import { CLOSE_TOAST, SHOW_TOAST } from "../reducer/toastReducer";
 
@@ -45,3 +46,15 @@ export const dispatchToastOpen = (isBookmarked, id) => {
     }, 2000);
   };
 };
+
+//modalReducer
+
+export const dispatchModalOpen = (id, image, title, bookmark) => ({
+  type: MODAL_OPENED,
+  id,
+  image,
+  bookmark,
+  title,
+});
+
+export const dispatchModalClose = () => ({ type: MODAL_CLOSED });

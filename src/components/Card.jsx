@@ -24,9 +24,12 @@ const ImgBox = styled.div`
 
 export default function Card({ data }) {
   const [modalClick, setModalClick] = useState(false);
+  const onClick = () => {
+    setModalClick(true);
+  };
   return (
     <>
-      <Article onClick={() => setModalClick(true)}>
+      <Article onClick={onClick}>
         <ImgBox back={data.brand_image_url} image={data.image_url}>
           <Bookmark bookmark={data.bookmarked} id={data.id} />
         </ImgBox>

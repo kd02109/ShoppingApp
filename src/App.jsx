@@ -10,7 +10,7 @@ import ToastContainer from "./components/ToastContainer";
 function App() {
   // toast item 불러오기
   const toast = useSelector((state) => state.toast);
-
+  const modal = useSelector((state) => state.modal);
   //api 불러오기
   const { data } = useApi();
 
