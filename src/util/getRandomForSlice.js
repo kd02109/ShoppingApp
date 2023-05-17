@@ -1,3 +1,3 @@
-export default function getRandomForSlice(data) {
-  return Math.floor(Math.random() * data.length - 4);
+export default function getRandomForSlice(data, chooseNum) {
+  return Math.floor(Math.random() * data.length - chooseNum);
 }

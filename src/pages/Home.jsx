@@ -20,10 +20,15 @@ const List = styled.ul`
   gap: 24px;
   flex-wrap: wrap;
 `;
+
+const CHOOSENUMBER = 4;
 function Home({ handleClick, isLoading, setToast, setToastBookmark }) {
   // 화면 변경 표시 제거
+
   const state = useSelector((state) => state.bookmark);
-  const [randomNumber, setrandomNumber] = useState(getRandomForSlice(state));
+  const [randomNumber, setrandomNumber] = useState(
+    getRandomForSlice(state, CHOOSENUMBER)
+  );
   return (
     <>
       <Main onClick={handleClick}>
@@ -33,15 +38,17 @@ function Home({ handleClick, isLoading, setToast, setToastBookmark }) {
             <section>
               <Title>상품 리스트</Title>
               <List>
-                {state.slice(randomNumber, randomNumber + 4).map((item) => (
-                  <li key={item.id}>
-                    <Card
-                      data={item}
-                      setToast={setToast}
-                      setToastBookmark={setToastBookmark}
-                    />
-                  </li>
-                ))}
+                {state
+                  .slice(randomNumber, randomNumber + CHOOSENUMBER)
+                  .map((item) => (
+                    <li key={item.id}>
+                      <Card
+                        data={item}
+                        setToast={setToast}
+                        setToastBookmark={setToastBookmark}
+                      />
+                    </li>
+                  ))}
               </List>
             </section>
             <section>
