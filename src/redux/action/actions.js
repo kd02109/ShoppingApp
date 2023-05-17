@@ -1,4 +1,4 @@
-import { HAMBEGER_OPEN } from "../reducer/hambegeReducer";
+import { HAMBEGER_CLOSE, HAMBEGER_OPEN } from "../reducer/hambegeReducer";
 import { BOOKMARKED, SETINITIALVALUE, UNBOOKMARKED } from "../reducer/reducer";
 
 export const dispatchData = (data) => {
@@ -25,5 +25,11 @@ export const dispatchUnBookmark = (id) => {
 export const dispatchHambeger = () => {
   return {
     type: HAMBEGER_OPEN,
+  };
+};
+
+export const dispatchHambegerClose = () => {
+  return {
+    type: HAMBEGER_CLOSE,
   };
 };

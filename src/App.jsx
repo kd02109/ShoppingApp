@@ -1,7 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import useHeaderClick from "./hook/useHeaderClick";
 import useApi from "./hook/useApi";
 import { useDispatch } from "react-redux";
 import { dispatchData } from "./redux/action/actions";

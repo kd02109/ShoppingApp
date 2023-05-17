@@ -1,11 +1,10 @@
 import Loading from "../components/Loading";
 import styled from "styled-components";
 import Card from "../components/Card";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import getRandomForSlice from "../util/getRandomForSlice";
 import { useState } from "react";
-import { HAMBEGER_OPEN } from "../redux/reducer/hambegeReducer";
-import { dispatchHambeger } from "../redux/action/actions";
+import useClick from "../hook/useClick";
 
 const Main = styled.main`
   margin-top: 104px;
@@ -24,7 +23,7 @@ const List = styled.ul`
 `;
 
 const CHOOSENUMBER = 4;
-function Home({ handleClick, isLoading, setToast, setToastBookmark }) {
+function Home({ isLoading, setToast, setToastBookmark }) {
   // 화면 변경 표시 제거
 
   const state = useSelector((state) => state.bookmark);
@@ -32,10 +31,11 @@ function Home({ handleClick, isLoading, setToast, setToastBookmark }) {
     getRandomForSlice(state, CHOOSENUMBER)
   );
 
-  const dispatch = useDispatch();
+  const { onClick } = useClick();
+
   return (
     <>
-      <Main onClick={() => dispatch(dispatchHambeger())}>
+      <Main onClick={onClick}>
         {isLoading && <Loading />}
         {!isLoading && (
           <>

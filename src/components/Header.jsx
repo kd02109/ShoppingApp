@@ -4,7 +4,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import Dropdown from "./Dropdown";
 import { useDispatch, useSelector } from "react-redux";
-import { dispatchHambeger } from "../redux/action/actions";
+import {
+  dispatchHambeger,
+  dispatchHambegerClose,
+} from "../redux/action/actions";
 
 const Head = styled.header`
   width: 90%;
@@ -46,7 +49,7 @@ export default function Header() {
   const dispatch = useDispatch();
   const onClick = () => {
     if (hambegerState) {
-      dispatch(dispatchHambeger());
+      dispatch(dispatchHambegerClose());
     }
   };
   return (
