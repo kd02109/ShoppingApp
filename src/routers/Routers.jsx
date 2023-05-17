@@ -5,21 +5,27 @@ import Bookmark from "../pages/Bookmark";
 import App from "../App";
 import Home from "../pages/Home";
 
+const Path = {
+  HOME: "/",
+  PRODUCT: "/products/list",
+  BOOKMARK: "/bookmark",
+};
+
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     children: [
       {
-        path: "/",
+        path: Path.HOME,
         element: <Home />,
       },
       {
-        path: "/products/list",
+        path: Path.PRODUCT,
         element: <ProductLists />,
       },
       {
-        path: "/bookmark",
+        path: Path.BOOKMARK,
         element: <Bookmark />,
       },
     ],

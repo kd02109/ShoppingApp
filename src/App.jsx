@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
@@ -12,7 +12,7 @@ import { dispatchData } from "./redux/action/actions";
 import { useEffect, useState } from "react";
 import Toast from "./components/Toast";
 
-function App() {
+function App(props) {
   // header 클릭 적용하기
   const { click, setClick, handleClick } = useHeaderClick();
   //api 불러오기
@@ -36,43 +36,11 @@ function App() {
     dispatch(dispatchData(data));
   }, []);
 
+  console.log(props);
   return (
     <>
       <Header click={click} setClick={setClick} handleClick={handleClick} />
-      <Routes>
-        <Route
-          path="*"
-          element={
-            <Home
-              handleClick={handleClick}
-              isLoading={isLoading}
-              setToast={setToast}
-              setToastBookmark={setToastBookmark}
-            />
-          }
-        />
-        <Route
-          path="/products/list"
-          element={
-            <ProductLists
-              handleClick={handleClick}
-              setToast={setToast}
-              setToastBookmark={setToastBookmark}
-            />
-          }
-        />
-        <Route
-          path="/bookmark"
-          element={
-            <Bookmark
-              handleClick={handleClick}
-              setToast={setToast}
-              setToastBookmark={setToastBookmark}
-            />
-          }
-        />
-        <Route path="/*" element={<NotFound />} />
-      </Routes>
+      <Outlet />
       {toast && <Toast toastBookmar={toastBookmar} />}
       <Footer handleClick={handleClick} />
     </>
