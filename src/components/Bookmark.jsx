@@ -1,8 +1,6 @@
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { dispatchBookmark, dispatchUnBookmark } from "../redux/action/actions";
-import Toast from "./Toast";
-import { useState } from "react";
 
 const Svg = styled.svg`
   cursor: pointer;

@@ -9,8 +9,8 @@ import useClick from "../hook/useClick";
 
 const Main = styled.main`
   margin-top: 104px;
-  margin-left: ${(props) => props.theme.outerMargin};
-  margin-right: ${(props) => props.theme.outerMargin};
+  margin-left: ${(props) => props.theme.margin.spacing11};
+  margin-right: ${(props) => props.theme.margin.spacing11};
 `;
 
 const Container = styled.div`
@@ -25,7 +25,7 @@ const List = styled.ul`
   flex-wrap: wrap;
 `;
 
-function ProductLists({ handleClick, setToast, setToastBookmark }) {
+function ProductLists({ setToast, setToastBookmark }) {
   const [numState, setNumState] = useState(0);
   const state = useSelector((state) => state.bookmark);
 
