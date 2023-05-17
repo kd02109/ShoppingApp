@@ -1,23 +1,27 @@
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { dispatchBookmark, dispatchUnBookmark } from "../redux/action/actions";
+import {
+  dispatchBookmark,
+  dispatchToastOpen,
+  dispatchUnBookmark,
+} from "../redux/action/actions";
 
 const Svg = styled.svg`
   cursor: pointer;
   margin: 10px;
 `;
 
-export default function Bookmark({ bookmark, id, setToast, setToastBookmark }) {
+export default function Bookmark({ bookmark, id }) {
   const dispatch = useDispatch();
   const handleBookmark = (event) => {
     event.stopPropagation();
-    /* setToast(true); */
+
     if (bookmark) {
       dispatch(dispatchUnBookmark(id));
-      /* setToastBookmark(false); */
+      dispatch(dispatchToastOpen(!bookmark, id));
     } else {
       dispatch(dispatchBookmark(id));
-      /* setToastBookmark(true); */
+      dispatch(dispatchToastOpen(!bookmark, id));
     }
   };
   return (

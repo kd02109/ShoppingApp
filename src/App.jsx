@@ -2,13 +2,14 @@ import { Outlet } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import useApi from "./hook/useApi";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { dispatchData } from "./redux/action/actions";
-import { useEffect, useState } from "react";
-import Toast from "./components/Toast";
+import { useEffect } from "react";
+import ToastContainer from "./components/ToastContainer";
 
 function App() {
-  // header 클릭 적용하기
+  // toast item 불러오기
+  const toast = useSelector((state) => state.toast);
 
   //api 불러오기
   const { data } = useApi();
@@ -23,7 +24,7 @@ function App() {
     <>
       <Header />
       <Outlet />
-      {<Toast toastBookmar={toastBookmar} />}
+      {toast.length > 0 && <ToastContainer />}
       <Footer />
     </>
   );
