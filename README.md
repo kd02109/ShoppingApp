@@ -306,5 +306,7 @@ Please change the parent <Route path="/"> to <Route path="*">.
 - 이를 위한 해결 방법으로 Outlet을 활용하는 것이었습니다. 하지만 저의 코드에서 전역에서 관리해야 할 state를 뿌려 주고 있는 상황에서 Outlet에서 Prop 전달을 할 수 있는 방법이 없었습니다. 따라서  contextAPI혹은 reducer를 활용해서 이를 관리하고자 합니다. 
 - 물론 useRoutes나 loader와 같은 새로운 기능을 활용하면 되지만, 제한된 시간 내에 이를 다시 학습하는 것은 어려움이 있었습니다. 그래서 이를 새로운 reducer를 만들어서 관리하고자 합니다. 추후 createBrowerRouter를 학습하고자 합니다.
 
-
-
+## 2 CSS 수정하기
+- Theme의 형태를 변경했습니다. 
+- GlobalStyle의 #root에 base font-size를 지정한 후 모드 상대 수치인 rem으로 변경했습니다.
+- margin 관리를 spacing06, spacing11로 변경했습니다. 이는 해당 사이트를 참고하여 변경했습니다. [링크](https://carbondesignsystem.com/guidelines/spacing/overview)
