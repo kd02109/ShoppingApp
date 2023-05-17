@@ -346,3 +346,7 @@ export default getRandomForSlice(data){
 - useReducer를 활용하면 데이터가 복잡해지는 구조는 해결할 수 있지만, 여전히 state 관리가 어렵다는 문제가 있었습니다. 따라서 contextAPI와 함께 사용을 해야 했습니다. 하지만 현재 전역 상태관리로 redux를 사용하고 있기 때문에 redux를 활용하기로 하였습니다. 
 - 비동기로 동작하여 데이터를 처리해야 하기 때문에 관련 middleware인 redux-thunk를 설치하여 새로운 reducer를 만들었습니다. (toastReducer)
 - toastReducer는 기본적으로 데이터를 비워둔 상태로 관리하는 것을 목표로 했습니다. 빈 배열을 초기 데이터로 설정하여 새로운 데이터가 들어오면 하나씩 쌓이고 처음 들어온 데이터 부터 제거되는 queue를 차용해서 reducer의 구조를 작성했습니다.
+
+## 6. MODAL 버그 픽스
+- 기존에는 Modal을 Card 컴포넌트 안에 위치하게 하였습니다. 이때 정상적으로 작동하지만, 북마크 페이지에서 북마크를 해제할시 Card component가 unmount되면서 Modal 또한 강제로 종료되는 현상이 있었습니다. 
+- 따라서 Modal 컴포넌트를 전역에서 설정해서 redux를 통해 상태 관리를 하도록 수정하였습니다. 이를 통해 버그를 해결할 수 있었습니다. 
