@@ -10,7 +10,7 @@ import Toast from "./components/Toast";
 
 function App() {
   // header 클릭 적용하기
-  const { click, setClick, handleClick } = useHeaderClick();
+
   //api 불러오기
   const { data, isLoading } = useApi();
 
@@ -34,10 +34,10 @@ function App() {
 
   return (
     <>
-      <Header click={click} setClick={setClick} handleClick={handleClick} />
+      <Header />
       <Outlet />
       {toast && <Toast toastBookmar={toastBookmar} />}
-      <Footer handleClick={handleClick} />
+      <Footer />
     </>
   );
 }

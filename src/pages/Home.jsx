@@ -1,9 +1,11 @@
 import Loading from "../components/Loading";
 import styled from "styled-components";
 import Card from "../components/Card";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import getRandomForSlice from "../util/getRandomForSlice";
 import { useState } from "react";
+import { HAMBEGER_OPEN } from "../redux/reducer/hambegeReducer";
+import { dispatchHambeger } from "../redux/action/actions";
 
 const Main = styled.main`
   margin-top: 104px;
@@ -29,9 +31,11 @@ function Home({ handleClick, isLoading, setToast, setToastBookmark }) {
   const [randomNumber, setrandomNumber] = useState(
     getRandomForSlice(state, CHOOSENUMBER)
   );
+
+  const dispatch = useDispatch();
   return (
     <>
-      <Main onClick={handleClick}>
+      <Main onClick={() => dispatch(dispatchHambeger())}>
         {isLoading && <Loading />}
         {!isLoading && (
           <>

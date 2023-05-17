@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import FilterList from "../components/FilterList";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Card from "../components/Card";
+import { dispatchHambeger } from "../redux/action/actions";
 
 const Main = styled.main`
   margin-top: 104px;
@@ -22,11 +23,17 @@ const List = styled.ul`
   flex-wrap: wrap;
 `;
 
-function Bookmark({ handleClick, setToast, setToastBookmark }) {
+function Bookmark({ setToast, setToastBookmark }) {
   const [numState, setNumState] = useState(0);
   const state = useSelector((state) => state.bookmark);
+
+  const dispatch = useDispatch();
   return (
-    <Main onClick={handleClick}>
+    <Main
+      onClick={() => {
+        dispatch(dispatchHambeger());
+      }}
+    >
       <Container>
         <FilterList numState={numState} setNumState={setNumState} />
       </Container>

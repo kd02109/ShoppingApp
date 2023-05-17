@@ -1,4 +1,6 @@
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
+import { dispatchHambeger } from "../redux/action/actions";
 
 const Foot = styled.footer`
   width: 100%;
@@ -18,9 +20,10 @@ const Foot = styled.footer`
   }
 `;
 
-export default function Footer({ handleClick }) {
+export default function Footer() {
+  const dispatch = useDispatch();
   return (
-    <Foot onClick={handleClick}>
+    <Foot onClick={() => dispatch(dispatchHambeger())}>
       <span>개인정보 처리방침 | 이용 약관</span>
       <span>All rights reserved @ Codestates</span>
     </Foot>

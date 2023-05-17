@@ -3,6 +3,8 @@ import img from "../assest/logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import Dropdown from "./Dropdown";
+import { useDispatch, useSelector } from "react-redux";
+import { dispatchHambeger } from "../redux/action/actions";
 
 const Head = styled.header`
   width: 90%;
@@ -39,9 +41,16 @@ const LeftBox = styled.div`
   position: relative;
 `;
 
-export default function Header({ click, setClick, handleClick }) {
+export default function Header() {
+  const hambegerState = useSelector((state) => state.hamberger);
+  const dispatch = useDispatch();
+  const onClick = () => {
+    if (hambegerState) {
+      dispatch(dispatchHambeger());
+    }
+  };
   return (
-    <Head onClick={handleClick}>
+    <Head onClick={onClick}>
       <div>
         <LOGO src={img} alt="logo" />
         <Title>COZ Shopping</Title>
@@ -49,11 +58,12 @@ export default function Header({ click, setClick, handleClick }) {
       <LeftBox>
         <StyledIcon
           icon={faBars}
-          onClick={() => {
-            setClick((prev) => !prev);
+          onClick={(e) => {
+            e.stopPropagation();
+            dispatch(dispatchHambeger());
           }}
         />
-        {click && <Dropdown />}
+        {hambegerState && <Dropdown />}
       </LeftBox>
     </Head>
   );

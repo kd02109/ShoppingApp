@@ -1,10 +1,11 @@
 import styled from "styled-components";
 import FilterList from "../components/FilterList";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Card from "../components/Card";
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
+import { dispatchHambeger } from "../redux/action/actions";
 
 const Main = styled.main`
   margin-top: 104px;
@@ -40,8 +41,10 @@ function ProductLists({ handleClick, setToast, setToastBookmark }) {
     }
   }, [inView]);
 
+  // 헤더 햄버거컴포넌트 관리
+  const dispatch = useDispatch();
   return (
-    <Main onClick={handleClick}>
+    <Main onClick={() => dispatch(dispatchHambeger())}>
       <Container>
         <FilterList numState={numState} setNumState={setNumState} />
       </Container>
