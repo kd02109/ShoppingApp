@@ -13,10 +13,6 @@ function App() {
   //api 불러오기
   const { data } = useApi();
 
-  //Toast 조정
-  const [toast, setToast] = useState(false);
-  const [toastBookmar, setToastBookmark] = useState(false);
-
   //query 데이터 redux에 저장하기
   const dispatch = useDispatch();
   useEffect(() => {
@@ -27,7 +23,7 @@ function App() {
     <>
       <Header />
       <Outlet />
-      {toast && <Toast toastBookmar={toastBookmar} />}
+      {<Toast toastBookmar={toastBookmar} />}
       <Footer />
     </>
   );

@@ -22,18 +22,13 @@ const ImgBox = styled.div`
   justify-content: flex-end;
 `;
 
-export default function Card({ data, setToast, setToastBookmark }) {
+export default function Card({ data }) {
   const [modalClick, setModalClick] = useState(false);
   return (
     <>
       <Article onClick={() => setModalClick(true)}>
         <ImgBox back={data.brand_image_url} image={data.image_url}>
-          <Bookmark
-            bookmark={data.bookmarked}
-            id={data.id}
-            /* setToast={setToast}
-            setToastBookmark={setToastBookmark} */
-          />
+          <Bookmark bookmark={data.bookmarked} id={data.id} />
         </ImgBox>
         <Description
           type={data.type}
@@ -51,8 +46,6 @@ export default function Card({ data, setToast, setToastBookmark }) {
           setModalClick={setModalClick}
           bookmark={data.bookmarked}
           id={data.id}
-          /*           setToast={setToast}
-          setToastBookmark={setToastBookmark} */
         />
       )}
     </>

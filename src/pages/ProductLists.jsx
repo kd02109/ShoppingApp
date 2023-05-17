@@ -52,11 +52,7 @@ function ProductLists({ setToast, setToastBookmark }) {
           {numState === 0 &&
             state.slice(0, dataNum).map((item) => (
               <li key={item.id}>
-                <Card
-                  data={item}
-                  setToast={setToast}
-                  setToastBookmark={setToastBookmark}
-                />
+                <Card data={item} />
               </li>
             ))}
           {numState === 1 &&
@@ -65,11 +61,7 @@ function ProductLists({ setToast, setToastBookmark }) {
               .slice(0, dataNum)
               .map((item) => (
                 <li key={item.id}>
-                  <Card
-                    data={item}
-                    setToast={setToast}
-                    setToastBookmark={setToastBookmark}
-                  />
+                  <Card data={item} />
                 </li>
               ))}
           {numState === 2 &&
@@ -78,11 +70,7 @@ function ProductLists({ setToast, setToastBookmark }) {
               .slice(0, dataNum)
               .map((item) => (
                 <li key={item.id}>
-                  <Card
-                    data={item}
-                    setToast={setToast}
-                    setToastBookmark={setToastBookmark}
-                  />
+                  <Card data={item} />
                 </li>
               ))}
           {numState === 3 &&
@@ -91,11 +79,7 @@ function ProductLists({ setToast, setToastBookmark }) {
               .slice(0, dataNum)
               .map((item) => (
                 <li key={item.id}>
-                  <Card
-                    data={item}
-                    setToast={setToast}
-                    setToastBookmark={setToastBookmark}
-                  />
+                  <Card data={item} />
                 </li>
               ))}
           {numState === 4 &&
@@ -104,11 +88,7 @@ function ProductLists({ setToast, setToastBookmark }) {
               .slice(0, dataNum)
               .map((item) => (
                 <li key={item.id}>
-                  <Card
-                    data={item}
-                    setToast={setToast}
-                    setToastBookmark={setToastBookmark}
-                  />
+                  <Card data={item} />
                 </li>
               ))}
         </List>

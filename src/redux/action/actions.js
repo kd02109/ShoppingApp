@@ -37,11 +37,11 @@ export const dispatchHambegerClose = () => {
 };
 
 //toastReducer
-export const dispatchToastOpen = (isBookmarked) => {
+export const dispatchToastOpen = (isBookmarked, id) => {
   return (dispatch) => {
-    dispatch({ type: SHOW_TOAST, isBookmarked });
+    dispatch({ type: SHOW_TOAST, isBookmarked, id });
     setTimeout(() => {
-      dispatch({ type: CLOSE_TOAST, isBookmarked });
+      dispatch({ type: CLOSE_TOAST, isBookmarked, id });
     }, 2000);
   };
 };

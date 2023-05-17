@@ -23,7 +23,7 @@ const List = styled.ul`
   flex-wrap: wrap;
 `;
 
-function Bookmark({ setToast, setToastBookmark }) {
+function Bookmark() {
   const [numState, setNumState] = useState(0);
   const state = useSelector((state) => state.bookmark);
   const { onClick } = useClick();
@@ -39,11 +39,7 @@ function Bookmark({ setToast, setToastBookmark }) {
               .filter((item) => item.bookmarked)
               .map((item) => (
                 <li key={item.id}>
-                  <Card
-                    data={item}
-                    setToast={setToast}
-                    setToastBookmark={setToastBookmark}
-                  />
+                  <Card data={item} />
                 </li>
               ))}
           {numState === 1 &&
@@ -51,11 +47,7 @@ function Bookmark({ setToast, setToastBookmark }) {
               .filter((item) => item.type === "Product" && item.bookmarked)
               .map((item) => (
                 <li key={item.id}>
-                  <Card
-                    data={item}
-                    setToast={setToast}
-                    setToastBookmark={setToastBookmark}
-                  />
+                  <Card data={item} />
                 </li>
               ))}
           {numState === 2 &&
@@ -63,11 +55,7 @@ function Bookmark({ setToast, setToastBookmark }) {
               .filter((item) => item.type === "Category" && item.bookmarked)
               .map((item) => (
                 <li key={item.id}>
-                  <Card
-                    data={item}
-                    setToast={setToast}
-                    setToastBookmark={setToastBookmark}
-                  />
+                  <Card data={item} />
                 </li>
               ))}
           {numState === 3 &&
@@ -75,11 +63,7 @@ function Bookmark({ setToast, setToastBookmark }) {
               .filter((item) => item.type === "Exhibition" && item.bookmarked)
               .map((item) => (
                 <li key={item.id}>
-                  <Card
-                    data={item}
-                    setToast={setToast}
-                    setToastBookmark={setToastBookmark}
-                  />
+                  <Card data={item} />
                 </li>
               ))}
           {numState === 4 &&
@@ -87,11 +71,7 @@ function Bookmark({ setToast, setToastBookmark }) {
               .filter((item) => item.type === "Brand" && item.bookmarked)
               .map((item) => (
                 <li key={item.id}>
-                  <Card
-                    data={item}
-                    setToast={setToast}
-                    setToastBookmark={setToastBookmark}
-                  />
+                  <Card data={item} />
                 </li>
               ))}
         </List>

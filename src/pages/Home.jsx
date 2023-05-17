@@ -26,7 +26,7 @@ const List = styled.ul`
 `;
 
 const CHOOSENUMBER = 4;
-function Home({ setToast, setToastBookmark }) {
+function Home() {
   const { isLoading } = useApi();
 
   const state = useSelector((state) => state.bookmark);
@@ -49,11 +49,7 @@ function Home({ setToast, setToastBookmark }) {
                   .slice(randomNumber, randomNumber + CHOOSENUMBER)
                   .map((item) => (
                     <li key={item.id}>
-                      <Card
-                        data={item}
-                        setToast={setToast}
-                        setToastBookmark={setToastBookmark}
-                      />
+                      <Card data={item} />
                     </li>
                   ))}
               </List>
@@ -66,11 +62,7 @@ function Home({ setToast, setToastBookmark }) {
                   .slice(0, 4)
                   .map((item) => (
                     <li key={item.id}>
-                      <Card
-                        data={item}
-                        setToast={setToast}
-                        setToastBookmark={setToastBookmark}
-                      />
+                      <Card data={item} />
                     </li>
                   ))}
               </List>
