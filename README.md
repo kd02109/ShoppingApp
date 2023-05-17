@@ -7,6 +7,44 @@
 - [디자인 링크](https://www.figma.com/file/TfWAvMXegGEJiS3etqOSfs/FE-S4-project?type=design&node-id=3%3A77&t=3LJWT6Y8o2tLK7f2-1)
 
 ## 구현 요소(명세서)
+### Main page(메인 페이지)
+
+- path: /
+- Header와 Footer를 갖고 있으며, 해당 GNB와 Footer는 어느 페이지를 가더라도 항상 존재해야 한다.
+  - Header 내 햄버거 버튼 존재, 햄버거 버튼 펼칠 시 내부에
+      - Header는 페이지 내 스크롤이 발생하더라도 항상 상단에 붙어있어야 한다.
+      - 메인로고 → 클릭하면 / 페이지로 이동
+      - 햄버거 버튼
+          - 상품리스트 → 클릭하면 /products/list 페이지로 이동
+          - 북마크페이지 → 클릭하면 /bookmark 페이지로 이동
+  - Footer
+      - 일련의 텍스트 정보들
+- 해당 메인페이지에서는
+    - 모든 타입의 상품 정보를 4개 보여준다 (필터기능 없이)
+      - 보여지는 상품의 타입은 혼합되어 있을 수 있다 (상품, 카테고리, 기획전, 브랜드)
+    - 모든 타입의 북마크 된 상품 정보를 4개 보여준다 (필터기능 없이)
+      - 보여지는 상품의 타입은 혼합되어 있을 수 있다 (상품, 카테고리, 기획전, 브랜드)
+<hr/>
+
+### Products list page(상품리스트 페이지)
+
+- path: /products/list
+- 서버에서 제공하는 상품 리스트들을 확인할 수 있는 페이지이며   
+  - 무한 스크롤을 통해 상품들을 계속 보여줄 수 있어야 한다 .무한스크롤은 쿼리파라미터를 통한 매번 api call이 아닌, 최초 1번 api call을 통해 전체 데이터를 받아온 후 적용합니다.
+- 상품은 각 상품별로 타입이 존재한다. (상품, 카테고리, 기획전, 브랜드)
+- 상단의 필터 버튼을 통해 상품을 타입별로 조회해 보여줄 수 있어야 한다.
+- 각 상품을 클릭하면 해당 상품의 사진을 보여주는 모달을 띄울 수 있어야 한다.
+- 각 상품에 존재하는 북마크 버튼을 눌러 원하는 상품을 북마크 할 수 있어야 한다.
+- 이미 북마크 된 상품의 경우, 북마크 버튼에 표시를 해주어야 하며 다시 한 번 북마크 버튼을 클릭 시 해당 상품을 북마크에서 삭제한다.
+- 북마크 버튼을 클릭하여 북마크에 추가 할 때 그리고 삭제할 때는 사용자에게 알림 토스트가 표시되어야 한다.
+<hr/>
+
+### Bookmark page(북마크 페이지)
+
+- path: /bookmark
+- 사용자가 북마크 한 상품 들을 확인할 수 있는 페이지로 무한 스크롤이 가능해야 한다.
+- 상품리스트 페이지에 존재하는 필터링 버튼과 같은 버튼을 이용해 상품을 타입별로 필터해 보여줄 수 있어야 한다.
+
 
 ### Main page(메인 페이지)
 
@@ -247,3 +285,26 @@ Please change the parent <Route path="/"> to <Route path="*">.
 - 처음에는 Bookmark 컴포넌트에 Toast 컴포넌트를 작성하여 작업을 하려 했습니다. 하지만 이때 각 Card 컴포넌트 별로 Toast 컴포넌트의 위치가 잡혀지고 최대 100개의 Toast 컴포넌트가 생성된다는 것을 확인할 수 있었습니다. 이는 고정된 하나의 position을 잡는 것에 문제가 있었습니다. 그래서 Toast 컴포넌트의 위치를 APP에 위치하여 하나의 컴포넌트 만을 state 처리를 통해 불러오도록 하였습니다.
 - 총 두개의 state를 활용하였습니다. toastBookmark와 toast state를 활용하였습니다. toastBookmar는 보여주어야 할 Toast의 형태를 결정하는 state이고 toast state는 toast를 화면에 렌더링을 트리거하는 state로 작동하도록 구성하였습니다. 
 - 이후 useEffect를 통해 setTimeout을 설정해서 작업을 하였습니다. 의존성 배열에  toastBookmark와 toast를 추가하여 해당 값이 변경될 때 마다 useState가 실행되도록 작성하였습니다.
+
+
+### 10. 무한 스크롤 구현
+- "react-intersection-observer"를 통해 구현하였습니다. 
+- 화면 간의 이동중, 불러온 무한 스크롤이 유지 되지 않는 문제를 해결해야 할 것 같습니다. 
+
+# CODE REFACTORING
+
+## 1. Router 수정하기
+- 처음으로 createBrowserRouter를 프로젝트에 시도해 보았을 때, 다음과 같은 경고가 콘솔에 나타났습니다. 
+
+```
+history.ts:487 You rendered descendant <Routes> (or called `useRoutes()`) at "/" (under <Route path="/">) but the parent route path has no trailing "*". This means if you navigate deeper, the parent won't match anymore and therefore the child routes will never render.
+
+Please change the parent <Route path="/"> to <Route path="*">.
+```
+- 이는 Routes를 중첩으로 사용하여 생긴 위험 경고 였습니다. 그래서 createBrowserRouter, BrowserRouter중 하나를 선택해서 적용을 해야 했습니다. 
+
+- 이를 위한 해결 방법으로 Outlet을 활용하는 것이었습니다. 하지만 저의 코드에서 전역에서 관리해야 할 state를 뿌려 주고 있는 상황에서 Outlet에서 Prop 전달을 할 수 있는 방법이 없었습니다. 따라서  contextAPI혹은 reducer를 활용해서 이를 관리하고자 합니다. 
+- 물론 useRoutes나 loader와 같은 새로운 기능을 활용하면 되지만, 제한된 시간 내에 이를 다시 학습하는 것은 어려움이 있었습니다. 그래서 이를 새로운 reducer를 만들어서 관리하고자 합니다. 추후 createBrowerRouter를 학습하고자 합니다.
+
+
+

@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
@@ -38,45 +38,12 @@ function App(props) {
 
   console.log(props);
   return (
-    <BrowserRouter>
+    <>
       <Header click={click} setClick={setClick} handleClick={handleClick} />
-      <Routes>
-        <Route
-          path="*"
-          element={
-            <Home
-              handleClick={handleClick}
-              isLoading={isLoading}
-              setToast={setToast}
-              setToastBookmark={setToastBookmark}
-            />
-          }
-        />
-        <Route
-          path="/products/list"
-          element={
-            <ProductLists
-              handleClick={handleClick}
-              setToast={setToast}
-              setToastBookmark={setToastBookmark}
-            />
-          }
-        />
-        <Route
-          path="/bookmark"
-          element={
-            <Bookmark
-              handleClick={handleClick}
-              setToast={setToast}
-              setToastBookmark={setToastBookmark}
-            />
-          }
-        />
-        <Route path="/*" element={<NotFound />} />
-      </Routes>
+      <Outlet />
       {toast && <Toast toastBookmar={toastBookmar} />}
       <Footer handleClick={handleClick} />
-    </BrowserRouter>
+    </>
   );
 }
 

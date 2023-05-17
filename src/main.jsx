@@ -1,5 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { RouterProvider } from "react-router-dom";
+import router from "./routers/Routers.jsx";
 import GlobalStyle from "./GlobalStyle.jsx";
 import { ThemeProvider } from "styled-components";
 import { QueryClientProvider } from "@tanstack/react-query";
@@ -8,7 +10,6 @@ import { queryClient } from "./api/api.jsx";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import set from "./redux/reducer/store.js";
-import App from "./App.jsx";
 //import { persistor }  from "./redux/reducer/store.js";
 
 const { store, persistor } = set;
@@ -19,7 +20,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <QueryClientProvider client={queryClient}>
         <ThemeProvider theme={theme}>
           <GlobalStyle />
-          <App />
+          <RouterProvider router={router} />
         </ThemeProvider>
       </QueryClientProvider>
     </PersistGate>
