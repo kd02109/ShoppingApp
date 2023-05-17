@@ -25,8 +25,6 @@ const List = styled.ul`
 function Bookmark({ handleClick, setToast, setToastBookmark }) {
   const [numState, setNumState] = useState(0);
   const state = useSelector((state) => state.bookmark);
-  console.log(state);
-
   return (
     <Main onClick={handleClick}>
       <Container>

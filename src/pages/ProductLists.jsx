@@ -3,6 +3,8 @@ import FilterList from "../components/FilterList";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import Card from "../components/Card";
+import { useEffect } from "react";
+import { useInView } from "react-intersection-observer";
 
 const Main = styled.main`
   margin-top: 104px;
@@ -25,7 +27,18 @@ const List = styled.ul`
 function ProductLists({ handleClick, setToast, setToastBookmark }) {
   const [numState, setNumState] = useState(0);
   const state = useSelector((state) => state.bookmark);
-  console.log(state);
+
+  // 무한 스크롤 구현
+  const [dataNum, setDataNum] = useState(30);
+  const [ref, inView] = useInView();
+  console.log(inView);
+
+  useEffect(() => {
+    if (inView && dataNum <= 120) {
+      setDataNum((prev) => (prev <= 100 ? prev + 30 : prev));
+      console.log("start");
+    }
+  }, [inView]);
 
   return (
     <Main onClick={handleClick}>
@@ -35,7 +48,7 @@ function ProductLists({ handleClick, setToast, setToastBookmark }) {
       <section>
         <List>
           {numState === 0 &&
-            state.map((item) => (
+            state.slice(0, dataNum).map((item) => (
               <li key={item.id}>
                 <Card
                   data={item}
@@ -47,6 +60,7 @@ function ProductLists({ handleClick, setToast, setToastBookmark }) {
           {numState === 1 &&
             state
               .filter((item) => item.type === "Product")
+              .slice(0, dataNum)
               .map((item) => (
                 <li key={item.id}>
                   <Card
@@ -59,6 +73,7 @@ function ProductLists({ handleClick, setToast, setToastBookmark }) {
           {numState === 2 &&
             state
               .filter((item) => item.type === "Category")
+              .slice(0, dataNum)
               .map((item) => (
                 <li key={item.id}>
                   <Card
@@ -71,6 +86,7 @@ function ProductLists({ handleClick, setToast, setToastBookmark }) {
           {numState === 3 &&
             state
               .filter((item) => item.type === "Exhibition")
+              .slice(0, dataNum)
               .map((item) => (
                 <li key={item.id}>
                   <Card
@@ -83,6 +99,7 @@ function ProductLists({ handleClick, setToast, setToastBookmark }) {
           {numState === 4 &&
             state
               .filter((item) => item.type === "Brand")
+              .slice(0, dataNum)
               .map((item) => (
                 <li key={item.id}>
                   <Card
@@ -94,6 +111,7 @@ function ProductLists({ handleClick, setToast, setToastBookmark }) {
               ))}
         </List>
       </section>
+      <div ref={ref} />
     </Main>
   );
 }
