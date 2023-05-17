@@ -2,7 +2,7 @@ import Loading from "../components/Loading";
 import styled from "styled-components";
 import Card from "../components/Card";
 import { useSelector } from "react-redux";
-import makeRandomNumber from "../util/makeRandomNumber";
+import getRandomForSlice from "../util/getRandomForSlice";
 import { useState } from "react";
 
 const Main = styled.main`
@@ -21,10 +21,14 @@ const List = styled.ul`
   flex-wrap: wrap;
 `;
 
+const CHOOSENUMBER = 4;
 function Home({ handleClick, isLoading, setToast, setToastBookmark }) {
   // 화면 변경 표시 제거
+
   const state = useSelector((state) => state.bookmark);
-  const [randomNumber, setrandomNumber] = useState(makeRandomNumber());
+  const [randomNumber, setrandomNumber] = useState(
+    getRandomForSlice(state, CHOOSENUMBER)
+  );
   return (
     <>
       <Main onClick={handleClick}>
@@ -34,15 +38,17 @@ function Home({ handleClick, isLoading, setToast, setToastBookmark }) {
             <section>
               <Title>상품 리스트</Title>
               <List>
-                {state.slice(randomNumber, randomNumber + 4).map((item) => (
-                  <li key={item.id}>
-                    <Card
-                      data={item}
-                      setToast={setToast}
-                      setToastBookmark={setToastBookmark}
-                    />
-                  </li>
-                ))}
+                {state
+                  .slice(randomNumber, randomNumber + CHOOSENUMBER)
+                  .map((item) => (
+                    <li key={item.id}>
+                      <Card
+                        data={item}
+                        setToast={setToast}
+                        setToastBookmark={setToastBookmark}
+                      />
+                    </li>
+                  ))}
               </List>
             </section>
             <section>

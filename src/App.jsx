@@ -8,7 +8,7 @@ import { dispatchData } from "./redux/action/actions";
 import { useEffect, useState } from "react";
 import Toast from "./components/Toast";
 
-function App(props) {
+function App() {
   // header 클릭 적용하기
   const { click, setClick, handleClick } = useHeaderClick();
   //api 불러오기
@@ -32,7 +32,6 @@ function App(props) {
     dispatch(dispatchData(data));
   }, []);
 
-  console.log(props);
   return (
     <>
       <Header click={click} setClick={setClick} handleClick={handleClick} />

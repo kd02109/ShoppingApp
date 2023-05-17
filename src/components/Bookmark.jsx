@@ -13,13 +13,13 @@ export default function Bookmark({ bookmark, id, setToast, setToastBookmark }) {
   const dispatch = useDispatch();
   const handleBookmark = (event) => {
     event.stopPropagation();
-    setToast(true);
+    /* setToast(true); */
     if (bookmark) {
       dispatch(dispatchUnBookmark(id));
-      setToastBookmark(false);
+      /* setToastBookmark(false); */
     } else {
       dispatch(dispatchBookmark(id));
-      setToastBookmark(true);
+      /* setToastBookmark(true); */
     }
   };
   return (

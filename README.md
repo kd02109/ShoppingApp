@@ -310,3 +310,25 @@ Please change the parent <Route path="/"> to <Route path="*">.
 - Theme의 형태를 변경했습니다. 
 - GlobalStyle의 #root에 base font-size를 지정한 후 모드 상대 수치인 rem으로 변경했습니다.
 - margin 관리를 spacing06, spacing11로 변경했습니다. 이는 해당 사이트를 참고하여 변경했습니다. [링크](https://carbondesignsystem.com/guidelines/spacing/overview)
+
+## 3 Util Directory의 getRandomForSlice 수정하기
+- 처음의 수정 방향은 random으로 뽑은 숫자가 배열 데이터의 길이 - 4보다 클시 주어진 배열에서 `[99,0,1,2]`식으로 뽑아낼 방식으로 수정하려 했다. 구현한 코드는 다음과 같다.
+
+```js
+export default getRandomForSlice(data){
+  const random = Math.floor(Math.random() * 100);
+  const { length } = data;
+  const sliceData = [];
+  for (let i = random; i < random + 4; i++) {
+    if (i > length - 1) {
+      sliceData.push({...data[i - length]});
+    } else {
+      sliceData.push({...data[i]});
+    }
+  }
+  return sliceData;
+}
+``` 
+
+- 이렇게 해서 새로운 배열을 만들고 이를 state로 관리 할때 문제가 발생하였다. bookmark가 될시 별 마크의 색이 변화해야 하는데, 기존의 state형태를 고정으로 가지고 있기에 redux와 연동된 새로운 데이터를 받아오지 못하고 setState를 자식 컴포넌트에게 넘겨 수정해주어야 했다. 이는 불필요한 작업이라고 느껴서 기존의 방식처럼 number 데이터를 넘겨주는 형식을 사용하는 것으로 채택하였다. 
+- 만약 이렇게 뽑아온 배열을 state로 관리하지 않을시 북마크 클릭시 모든 상품 리스트가 재렌더링 되기 때문에, 사용 측면에서 불편함을 경험했다.
