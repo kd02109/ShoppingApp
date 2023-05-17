@@ -1,15 +1,19 @@
 const theme = {
   font: {
-    large: "32px",
-    medium: "24px",
-    small: "16px",
-    footer: "12px",
+    large: "2rem",
+    medium: "1.5rem",
+    small: "1rem",
+    footer: "0.75rem",
   },
   title: "40px",
-  percentColor: "#452CDD",
-  footerColor: "#888888",
-  outerMargin: "76px",
-  cardMargin: "24px",
+  color: {
+    blue: "#452CDD",
+    gray: "#888888",
+  },
+  margin: {
+    spacing11: "80px", //outerMargin
+    spacing06: "24px", //cardMargin
+  },
 };
 
 export default theme;

@@ -6,8 +6,8 @@ import Card from "../components/Card";
 
 const Main = styled.main`
   margin-top: 104px;
-  margin-left: ${(props) => props.theme.outerMargin};
-  margin-right: ${(props) => props.theme.outerMargin};
+  margin-left: ${(props) => props.theme.margin.spacing11};
+  margin-right: ${(props) => props.theme.margin.spacing11};
 `;
 
 const Container = styled.div`

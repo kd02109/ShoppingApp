@@ -7,8 +7,8 @@ import Dropdown from "./Dropdown";
 const Head = styled.header`
   width: 90%;
   height: 80px;
-  padding-left: ${(props) => props.theme.outerMargin};
-  padding-right: ${(props) => props.theme.outerMargin};
+  padding-left: ${(props) => props.theme.margin.spacing11};
+  padding-right: ${(props) => props.theme.margin.spacing11};
   display: flex;
   justify-content: space-between;
   align-items: center;
