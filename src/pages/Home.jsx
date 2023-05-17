@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import getRandomForSlice from "../util/getRandomForSlice";
 import { useState } from "react";
 import useClick from "../hook/useClick";
+import useApi from "../hook/useApi";
 
 const Main = styled.main`
   margin-top: 104px;
@@ -23,8 +24,8 @@ const List = styled.ul`
 `;
 
 const CHOOSENUMBER = 4;
-function Home({ isLoading, setToast, setToastBookmark }) {
-  // 화면 변경 표시 제거
+function Home({ setToast, setToastBookmark }) {
+  const { isLoading } = useApi();
 
   const state = useSelector((state) => state.bookmark);
   const [randomNumber, setrandomNumber] = useState(

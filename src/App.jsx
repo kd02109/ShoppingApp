@@ -11,20 +11,12 @@ function App() {
   // header 클릭 적용하기
 
   //api 불러오기
-  const { data, isLoading } = useApi();
+  const { data } = useApi();
 
   //Toast 조정
   const [toast, setToast] = useState(false);
   const [toastBookmar, setToastBookmark] = useState(false);
 
-  useEffect(() => {
-    const id = setTimeout(() => {
-      setToast(false);
-    }, 1000);
-    return () => {
-      clearTimeout(id);
-    };
-  }, [toast, toastBookmar]);
   //query 데이터 redux에 저장하기
   const dispatch = useDispatch();
   useEffect(() => {
