@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import {
   dispatchBookmark,
+  dispatchChangeModalBookMark,
   dispatchToastOpen,
   dispatchUnBookmark,
 } from "../redux/action/actions";
@@ -15,7 +16,7 @@ export default function Bookmark({ bookmark, id }) {
   const dispatch = useDispatch();
   const handleBookmark = (event) => {
     event.stopPropagation();
-
+    dispatch(dispatchChangeModalBookMark());
     if (bookmark) {
       dispatch(dispatchUnBookmark(id));
       dispatch(dispatchToastOpen(!bookmark, id));

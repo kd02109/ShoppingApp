@@ -11,6 +11,7 @@ const Container = styled.div`
   & > :not(:last-child) {
     margin-top: 10px;
   }
+  z-index: 100;
 `;
 
 export default function ToastContainer() {

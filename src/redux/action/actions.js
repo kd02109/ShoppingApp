@@ -1,5 +1,9 @@
 import { HAMBEGER_CLOSE, HAMBEGER_OPEN } from "../reducer/hambegeReducer";
-import { MODAL_CLOSED, MODAL_OPENED } from "../reducer/modalReducer";
+import {
+  MODAL_BOOKMARK_CHANGED,
+  MODAL_CLOSED,
+  MODAL_OPENED,
+} from "../reducer/modalReducer";
 import { BOOKMARKED, SETINITIALVALUE, UNBOOKMARKED } from "../reducer/reducer";
 import { CLOSE_TOAST, SHOW_TOAST } from "../reducer/toastReducer";
 
@@ -58,3 +62,7 @@ export const dispatchModalOpen = (id, image, title, bookmark) => ({
 });
 
 export const dispatchModalClose = () => ({ type: MODAL_CLOSED });
+
+export const dispatchChangeModalBookMark = () => ({
+  type: MODAL_BOOKMARK_CHANGED,
+});

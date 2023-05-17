@@ -9,6 +9,7 @@ id -- toast에서 처리
 
 export const MODAL_OPENED = "MODAL_OPENED";
 export const MODAL_CLOSED = "MODAL_CLOSED";
+export const MODAL_BOOKMARK_CHANGED = "MODAL_BOOKMARK_CHANGED";
 
 const initialValue = {
   image: null,
@@ -25,12 +26,19 @@ const modalReducer = (state = initialValue, actions) => {
       return {
         image,
         title,
+        bookmark,
+        id,
         isModalOpened: true,
       };
     case MODAL_CLOSED:
       return {
         ...state,
         isModalOpened: false,
+      };
+    case MODAL_BOOKMARK_CHANGED:
+      return {
+        ...state,
+        bookmark: !state.bookmark,
       };
     default:
       return state;

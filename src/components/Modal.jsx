@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import Xmark from "./Xmark";
 import Bookmark from "./Bookmark";
+import { useDispatch } from "react-redux";
+import { dispatchModalClose } from "../redux/action/actions";
 
 const ModalBackGround = styled.div`
   position: fixed;
@@ -40,30 +42,18 @@ const ModalImage = styled.div`
   }
 `;
 
-export default function Modal({
-  title,
-  picture,
-  setModalClick,
-  bookmark,
-  id,
-  setToast,
-  setToastBookmark,
-}) {
+export default function Modal({ title, picture, bookmark, id }) {
+  const dispatch = useDispatch();
   return (
     <ModalBackGround
       onClick={() => {
-        setModalClick(false);
+        dispatch(dispatchModalClose());
       }}
     >
       <ModalImage imgSrc={picture} onClick={(event) => event.stopPropagation()}>
-        <Xmark setModalClick={setModalClick} />
+        <Xmark />
         <div>
-          <Bookmark
-            bookmark={bookmark}
-            id={id}
-            setToast={setToast}
-            setToastBookmark={setToastBookmark}
-          />
+          <Bookmark bookmark={bookmark} id={id} />
           <h1>{title}</h1>
         </div>
       </ModalImage>
