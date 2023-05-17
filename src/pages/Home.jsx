@@ -7,8 +7,8 @@ import { useState } from "react";
 
 const Main = styled.main`
   margin-top: 104px;
-  margin-left: ${(props) => props.theme.outerMargin};
-  margin-right: ${(props) => props.theme.outerMargin};
+  margin-left: ${(props) => props.theme.margin.spacing11};
+  margin-right: ${(props) => props.theme.margin.spacing11};
 `;
 const Title = styled.h2`
   font-size: ${(props) => props.theme.font.medium};

@@ -1,11 +1,7 @@
-import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import Home from "./pages/Home";
-import ProductLists from "./pages/ProductLists";
-import Bookmark from "./pages/Bookmark";
 import useHeaderClick from "./hook/useHeaderClick";
-import NotFound from "./pages/NotFound";
 import useApi from "./hook/useApi";
 import { useDispatch } from "react-redux";
 import { dispatchData } from "./redux/action/actions";

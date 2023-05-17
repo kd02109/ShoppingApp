@@ -8,8 +8,8 @@ const Foot = styled.footer`
   justify-content: center;
   align-items: center;
   margin-top: 24px;
-  color: ${(props) => props.theme.footerColor};
-  border-top: 1px solid ${(props) => props.theme.footerColor};
+  color: ${(props) => props.theme.color.gray};
+  border-top: 1px solid ${(props) => props.theme.color.gray};
   span {
     font-size: ${(props) => props.theme.font.footer};
   }
