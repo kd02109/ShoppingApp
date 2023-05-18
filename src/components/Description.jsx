@@ -33,6 +33,13 @@ const LeftSub = styled(SubTitle)`
   text-align: end;
 `;
 
+const cardType = {
+  product: "Product",
+  category: "Category",
+  brand: "Brand",
+  exhibition: "Exhibition",
+};
+
 export default function Description({
   type,
   title,
@@ -41,14 +48,14 @@ export default function Description({
   price,
   sub,
 }) {
-  if (type === "Product") {
+  if (type === cardType.product) {
     return (
       <Container>
         <RightBox>
           <Title>{title}</Title>
         </RightBox>
         <LeftBox>
-          <LeftTitle color="percent">{discount}%</LeftTitle>
+          <LeftTitle color={"percent"}>{discount}%</LeftTitle>
           <LeftSub>
             {price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원
           </LeftSub>
@@ -56,7 +63,7 @@ export default function Description({
       </Container>
     );
   }
-  if (type === "Category") {
+  if (type === cardType.category) {
     return (
       <Container>
         <RightBox>
@@ -65,7 +72,7 @@ export default function Description({
       </Container>
     );
   }
-  if (type === "Brand") {
+  if (type === cardType.brand) {
     return (
       <Container>
         <RightBox>
@@ -80,7 +87,7 @@ export default function Description({
       </Container>
     );
   }
-  if (type === "Exhibition") {
+  if (type === cardType.exhibition) {
     return (
       <Container>
         <RightBox>
