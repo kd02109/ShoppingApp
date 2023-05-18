@@ -1,13 +1,11 @@
 import styled from "styled-components";
 import Description from "./Description";
-import { useState } from "react";
-import Modal from "./Modal";
 import Bookmark from "./Bookmark";
 import { useDispatch } from "react-redux";
 import { dispatchModalOpen } from "../redux/action/actions";
 
 const Article = styled.article`
-  width: 264px;
+  width: 260px;
   height: 264px;
   cursor: pointer;
   margin: 12px 0px;

@@ -15,7 +15,7 @@ const FilterUl = styled.ul`
 
 const imgArr = [allImg, productImg, categoryImg, exhibitionImg, brandImg];
 const titleArr = ["전체", "상품", "카테고리", "기획전", "브랜드"];
-export default function FilterList({ numState, setNumState }) {
+export default function FilterList({ filterState, setFilterState }) {
   return (
     <FilterUl>
       {imgArr.map((item, index) => (
@@ -23,9 +23,8 @@ export default function FilterList({ numState, setNumState }) {
           key={index}
           imgSrc={item}
           title={titleArr[index]}
-          index={index}
-          numState={numState}
-          setNumState={setNumState}
+          filterState={filterState}
+          setFilterState={setFilterState}
         />
       ))}
     </FilterUl>

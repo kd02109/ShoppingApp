@@ -19,7 +19,8 @@ const Title = styled.span`
   width: 82px;
   text-align: center;
   padding: 6.5px 0px;
-  color: ${(props) => (props.numState === props.index ? "#412DD4" : "black")};
+  color: ${(props) =>
+    props.numState === props.children ? "#412DD4" : "black"};
 `;
 
 const Line = styled.div`
@@ -27,24 +28,16 @@ const Line = styled.div`
   border-bottom: 4px solid #412dd4;
 `;
 
-export default function Filter({
-  imgSrc,
-  title,
-  index,
-  numState,
-  setNumState,
-}) {
+export default function Filter({ imgSrc, title, filterState, setFilterState }) {
   const handleFilter = () => {
-    const number = index;
-    setNumState(number);
+    const name = title;
+    setFilterState(name);
   };
   return (
     <Section onClick={handleFilter}>
       <ImgDiv imgSrc={imgSrc} />
-      <Title numState={numState} index={index}>
-        {title}
-      </Title>
-      {index === numState && <Line />}
+      <Title filterState={filterState}>{title}</Title>
+      {title === filterState && <Line />}
     </Section>
   );
 }
