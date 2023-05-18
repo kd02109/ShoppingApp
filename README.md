@@ -7,7 +7,7 @@
 - [디자인 링크](https://www.figma.com/file/TfWAvMXegGEJiS3etqOSfs/FE-S4-project?type=design&node-id=3%3A77&t=3LJWT6Y8o2tLK7f2-1)
 
 ## 기술스택
-<img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=black"><img src="https://img.shields.io/badge/Css-1572B6?style=for-the-badge&logo=Css&logoColor=white"><img src="https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=Redux&logoColor=purple"><img src="https://img.shields.io/badge/Prettier-%5E2.8.8-yellow?logo=prettier&style=for-the-badge">
+<img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=black"><img src="https://img.shields.io/badge/Css-1572B6?style=for-the-badge&logo=Css&logoColor=white"><img src="https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=Redux&logoColor=purple"><img src="https://img.shields.io/badge/Prettier-%5E2.8.8-yellow?logo=prettier&style=for-the-badge"><img src="https://img.shields.io/badge/Eslint-%5E8.38.0-green?logo=eslint&style=for-the-badge"><img src="https://img.shields.io/badge/Vite-%5E4.3.0-skyblue?logo=vite&style=for-the-badge" /><img src="https://img.shields.io/badge/ReactRouter-%5E6.10.0-red?logo=reactrouter&style=for-the-badge"/><img src ="https://img.shields.io/badge/ReactQuery-%5E4.29.5-mint?logo=ReactQuery&style=for-the-badge" ><img src="https://img.shields.io/badge/Axios-%5E1.4.0-black?logo=axios&style=for-the-badge"/>
 ## 구현 요소(명세서)
 ### Main page(메인 페이지)
 
@@ -46,6 +46,9 @@
 - path: /bookmark
 - 사용자가 북마크 한 상품 들을 확인할 수 있는 페이지로 무한 스크롤이 가능해야 한다.
 - 상품리스트 페이지에 존재하는 필터링 버튼과 같은 버튼을 이용해 상품을 타입별로 필터해 보여줄 수 있어야 한다.
+
+## 최종 완성
+https://github.com/kd02109/fe-sprint-coz-shopping/assets/57277708/703579a2-1299-48e5-9075-df16ebfa3259
 
 
 # 진행 과정 정리 
