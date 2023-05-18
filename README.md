@@ -376,7 +376,7 @@ export default function getRandomForSlice(data, chooseNum) {
               </List>
             </section>
 ```
-위의 코드를 다음과 같이 Component로 분리하여 수정하였습니다. 
+- 위의 코드를 다음과 같이 Component로 분리하여 수정하였습니다. 
 ```js
             <CardList
               title={"상품 리스트"}
@@ -423,8 +423,10 @@ const filterSet = {
   exhibition: "기획전",
   brand: "브랜드",
 };
+
  {filterState === filterSet.all && (
         <CardList state={state.slice(0, dataNum)} />
       )}
 ```
+
 - 다음과 같이 뿌려줄 데이터를 관리하는 필터를 문자열로 하여 명확히 코드를 보고 의도를 파악할 수 있도록 하였습니다.
