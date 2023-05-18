@@ -3,6 +3,8 @@ import Description from "./Description";
 import { useState } from "react";
 import Modal from "./Modal";
 import Bookmark from "./Bookmark";
+import { useDispatch } from "react-redux";
+import { dispatchModalOpen } from "../redux/action/actions";
 
 const Article = styled.article`
   width: 264px;
@@ -22,18 +24,23 @@ const ImgBox = styled.div`
   justify-content: flex-end;
 `;
 
-export default function Card({ data, setToast, setToastBookmark }) {
-  const [modalClick, setModalClick] = useState(false);
+export default function Card({ data }) {
+  const dispatch = useDispatch();
+  const onClick = () => {
+    dispatch(
+      dispatchModalOpen(
+        data.id,
+        data.brand_image_url ? data.brand_image_url : data.image_url,
+        data.title ? data.title : data.brand_name,
+        data.bookmarked
+      )
+    );
+  };
   return (
     <>
-      <Article onClick={() => setModalClick(true)}>
+      <Article onClick={onClick}>
         <ImgBox back={data.brand_image_url} image={data.image_url}>
-          <Bookmark
-            bookmark={data.bookmarked}
-            id={data.id}
-            /* setToast={setToast}
-            setToastBookmark={setToastBookmark} */
-          />
+          <Bookmark bookmark={data.bookmarked} id={data.id} />
         </ImgBox>
         <Description
           type={data.type}
@@ -44,17 +51,6 @@ export default function Card({ data, setToast, setToastBookmark }) {
           sub={data.sub_title}
         />
       </Article>
-      {modalClick && (
-        <Modal
-          picture={data.brand_image_url ? data.brand_image_url : data.image_url}
-          title={data.title}
-          setModalClick={setModalClick}
-          bookmark={data.bookmarked}
-          id={data.id}
-          /*           setToast={setToast}
-          setToastBookmark={setToastBookmark} */
-        />
-      )}
     </>
   );
 }

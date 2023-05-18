@@ -23,16 +23,14 @@ const Container = styled.div`
     font-weight: 600;
     font-size: ${(props) => props.theme.font.small};
   }
-  position: fixed;
-  right: 20px;
-  bottom: 10px;
+
   animation: ${slideIn} 1s ease-in-out;
 `;
 
-export default function Toast({ toastBookmar }) {
+export default function Toast({ toastBoomark }) {
   return (
     <>
-      {toastBookmar ? (
+      {toastBoomark ? (
         <Container>
           <svg
             xmlns="http://www.w3.org/2000/svg"

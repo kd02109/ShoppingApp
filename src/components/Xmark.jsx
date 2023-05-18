@@ -1,4 +1,6 @@
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
+import { dispatchModalClose } from "../redux/action/actions";
 
 const Svg = styled.svg`
   position: absolute;
@@ -8,7 +10,8 @@ const Svg = styled.svg`
   cursor: pointer;
 `;
 
-export default function Xmark({ setModalClick }) {
+export default function Xmark() {
+  const dispatch = useDispatch();
   return (
     <Svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17,7 +20,7 @@ export default function Xmark({ setModalClick }) {
       viewBox="0 0 24 24"
       fill="none"
       onClick={() => {
-        setModalClick(false);
+        dispatch(dispatchModalClose());
       }}
     >
       <g filter="url(#filter0_d_79_1315)">

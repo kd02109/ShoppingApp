@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import useClick from "../hook/useClick";
 
 const Foot = styled.footer`
   width: 100%;
@@ -18,9 +19,11 @@ const Foot = styled.footer`
   }
 `;
 
-export default function Footer({ handleClick }) {
+export default function Footer() {
+  const { onClick } = useClick();
+
   return (
-    <Foot onClick={handleClick}>
+    <Foot onClick={onClick}>
       <span>개인정보 처리방침 | 이용 약관</span>
       <span>All rights reserved @ Codestates</span>
     </Foot>

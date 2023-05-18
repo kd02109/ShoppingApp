@@ -1,31 +1,21 @@
 import { Outlet } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import useHeaderClick from "./hook/useHeaderClick";
 import useApi from "./hook/useApi";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { dispatchData } from "./redux/action/actions";
-import { useEffect, useState } from "react";
-import Toast from "./components/Toast";
+import { useEffect } from "react";
+import ToastContainer from "./components/ToastContainer";
+import Modal from "./components/Modal";
 
 function App() {
-  // header 클릭 적용하기
-  const { click, setClick, handleClick } = useHeaderClick();
+  // toast item 불러오기
+  const toast = useSelector((state) => state.toast);
+  const modal = useSelector((state) => state.modal);
   //api 불러오기
-  const { data, isLoading } = useApi();
+  console.log(modal);
+  const { data } = useApi();
 
-  //Toast 조정
-  const [toast, setToast] = useState(false);
-  const [toastBookmar, setToastBookmark] = useState(false);
-
-  useEffect(() => {
-    const id = setTimeout(() => {
-      setToast(false);
-    }, 1000);
-    return () => {
-      clearTimeout(id);
-    };
-  }, [toast, toastBookmar]);
   //query 데이터 redux에 저장하기
   const dispatch = useDispatch();
   useEffect(() => {
@@ -34,10 +24,18 @@ function App() {
 
   return (
     <>
-      <Header click={click} setClick={setClick} handleClick={handleClick} />
+      <Header />
       <Outlet />
-      {toast && <Toast toastBookmar={toastBookmar} />}
-      <Footer handleClick={handleClick} />
+      {toast.length > 0 && <ToastContainer />}
+      {modal.isModalOpened && (
+        <Modal
+          title={modal.title}
+          picture={modal.image}
+          bookmark={modal.bookmark}
+          id={modal.id}
+        />
+      )}
+      <Footer />
     </>
   );
 }

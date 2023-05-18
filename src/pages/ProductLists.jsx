@@ -5,11 +5,12 @@ import { useSelector } from "react-redux";
 import Card from "../components/Card";
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
+import useClick from "../hook/useClick";
 
 const Main = styled.main`
-  margin-top: 104px;
-  margin-left: ${(props) => props.theme.outerMargin};
-  margin-right: ${(props) => props.theme.outerMargin};
+  margin-top: 24px;
+  margin-left: ${(props) => props.theme.margin.spacing11};
+  margin-right: ${(props) => props.theme.margin.spacing11};
 `;
 
 const Container = styled.div`
@@ -20,18 +21,17 @@ const Container = styled.div`
 `;
 const List = styled.ul`
   display: flex;
-  gap: 24px;
+  justify-content: space-around;
   flex-wrap: wrap;
 `;
 
-function ProductLists({ handleClick, setToast, setToastBookmark }) {
+function ProductLists({ setToast, setToastBookmark }) {
   const [numState, setNumState] = useState(0);
   const state = useSelector((state) => state.bookmark);
 
   // 무한 스크롤 구현
   const [dataNum, setDataNum] = useState(30);
   const [ref, inView] = useInView();
-  console.log(inView);
 
   useEffect(() => {
     if (inView && dataNum <= 120) {
@@ -40,8 +40,10 @@ function ProductLists({ handleClick, setToast, setToastBookmark }) {
     }
   }, [inView]);
 
+  // 헤더 햄버거컴포넌트 관리
+  const { onClick } = useClick();
   return (
-    <Main onClick={handleClick}>
+    <Main onClick={onClick}>
       <Container>
         <FilterList numState={numState} setNumState={setNumState} />
       </Container>
@@ -50,11 +52,7 @@ function ProductLists({ handleClick, setToast, setToastBookmark }) {
           {numState === 0 &&
             state.slice(0, dataNum).map((item) => (
               <li key={item.id}>
-                <Card
-                  data={item}
-                  setToast={setToast}
-                  setToastBookmark={setToastBookmark}
-                />
+                <Card data={item} />
               </li>
             ))}
           {numState === 1 &&
@@ -63,11 +61,7 @@ function ProductLists({ handleClick, setToast, setToastBookmark }) {
               .slice(0, dataNum)
               .map((item) => (
                 <li key={item.id}>
-                  <Card
-                    data={item}
-                    setToast={setToast}
-                    setToastBookmark={setToastBookmark}
-                  />
+                  <Card data={item} />
                 </li>
               ))}
           {numState === 2 &&
@@ -76,11 +70,7 @@ function ProductLists({ handleClick, setToast, setToastBookmark }) {
               .slice(0, dataNum)
               .map((item) => (
                 <li key={item.id}>
-                  <Card
-                    data={item}
-                    setToast={setToast}
-                    setToastBookmark={setToastBookmark}
-                  />
+                  <Card data={item} />
                 </li>
               ))}
           {numState === 3 &&
@@ -89,11 +79,7 @@ function ProductLists({ handleClick, setToast, setToastBookmark }) {
               .slice(0, dataNum)
               .map((item) => (
                 <li key={item.id}>
-                  <Card
-                    data={item}
-                    setToast={setToast}
-                    setToastBookmark={setToastBookmark}
-                  />
+                  <Card data={item} />
                 </li>
               ))}
           {numState === 4 &&
@@ -102,11 +88,7 @@ function ProductLists({ handleClick, setToast, setToastBookmark }) {
               .slice(0, dataNum)
               .map((item) => (
                 <li key={item.id}>
-                  <Card
-                    data={item}
-                    setToast={setToast}
-                    setToastBookmark={setToastBookmark}
-                  />
+                  <Card data={item} />
                 </li>
               ))}
         </List>

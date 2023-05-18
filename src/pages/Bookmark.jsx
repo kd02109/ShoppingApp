@@ -3,9 +3,10 @@ import FilterList from "../components/FilterList";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import Card from "../components/Card";
+import useClick from "../hook/useClick";
 
 const Main = styled.main`
-  margin-top: 104px;
+  margin-top: 24px;
   margin-left: ${(props) => props.theme.margin.spacing11};
   margin-right: ${(props) => props.theme.margin.spacing11};
 `;
@@ -22,11 +23,12 @@ const List = styled.ul`
   flex-wrap: wrap;
 `;
 
-function Bookmark({ handleClick, setToast, setToastBookmark }) {
+function Bookmark() {
   const [numState, setNumState] = useState(0);
   const state = useSelector((state) => state.bookmark);
+  const { onClick } = useClick();
   return (
-    <Main onClick={handleClick}>
+    <Main onClick={onClick}>
       <Container>
         <FilterList numState={numState} setNumState={setNumState} />
       </Container>
@@ -37,11 +39,7 @@ function Bookmark({ handleClick, setToast, setToastBookmark }) {
               .filter((item) => item.bookmarked)
               .map((item) => (
                 <li key={item.id}>
-                  <Card
-                    data={item}
-                    setToast={setToast}
-                    setToastBookmark={setToastBookmark}
-                  />
+                  <Card data={item} />
                 </li>
               ))}
           {numState === 1 &&
@@ -49,11 +47,7 @@ function Bookmark({ handleClick, setToast, setToastBookmark }) {
               .filter((item) => item.type === "Product" && item.bookmarked)
               .map((item) => (
                 <li key={item.id}>
-                  <Card
-                    data={item}
-                    setToast={setToast}
-                    setToastBookmark={setToastBookmark}
-                  />
+                  <Card data={item} />
                 </li>
               ))}
           {numState === 2 &&
@@ -61,11 +55,7 @@ function Bookmark({ handleClick, setToast, setToastBookmark }) {
               .filter((item) => item.type === "Category" && item.bookmarked)
               .map((item) => (
                 <li key={item.id}>
-                  <Card
-                    data={item}
-                    setToast={setToast}
-                    setToastBookmark={setToastBookmark}
-                  />
+                  <Card data={item} />
                 </li>
               ))}
           {numState === 3 &&
@@ -73,11 +63,7 @@ function Bookmark({ handleClick, setToast, setToastBookmark }) {
               .filter((item) => item.type === "Exhibition" && item.bookmarked)
               .map((item) => (
                 <li key={item.id}>
-                  <Card
-                    data={item}
-                    setToast={setToast}
-                    setToastBookmark={setToastBookmark}
-                  />
+                  <Card data={item} />
                 </li>
               ))}
           {numState === 4 &&
@@ -85,11 +71,7 @@ function Bookmark({ handleClick, setToast, setToastBookmark }) {
               .filter((item) => item.type === "Brand" && item.bookmarked)
               .map((item) => (
                 <li key={item.id}>
-                  <Card
-                    data={item}
-                    setToast={setToast}
-                    setToastBookmark={setToastBookmark}
-                  />
+                  <Card data={item} />
                 </li>
               ))}
         </List>

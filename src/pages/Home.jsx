@@ -4,9 +4,11 @@ import Card from "../components/Card";
 import { useSelector } from "react-redux";
 import getRandomForSlice from "../util/getRandomForSlice";
 import { useState } from "react";
+import useClick from "../hook/useClick";
+import useApi from "../hook/useApi";
 
 const Main = styled.main`
-  margin-top: 104px;
+  margin-top: 24px;
   margin-left: ${(props) => props.theme.margin.spacing11};
   margin-right: ${(props) => props.theme.margin.spacing11};
 `;
@@ -17,21 +19,26 @@ const Title = styled.h2`
 
 const List = styled.ul`
   display: flex;
-  gap: 24px;
   flex-wrap: wrap;
+  & > :not(:last-child) {
+    margin-right: 20px;
+  }
 `;
 
 const CHOOSENUMBER = 4;
-function Home({ handleClick, isLoading, setToast, setToastBookmark }) {
-  // 화면 변경 표시 제거
+function Home() {
+  const { isLoading } = useApi();
 
   const state = useSelector((state) => state.bookmark);
   const [randomNumber, setrandomNumber] = useState(
     getRandomForSlice(state, CHOOSENUMBER)
   );
+
+  const { onClick } = useClick();
+
   return (
     <>
-      <Main onClick={handleClick}>
+      <Main onClick={onClick}>
         {isLoading && <Loading />}
         {!isLoading && (
           <>
@@ -42,11 +49,7 @@ function Home({ handleClick, isLoading, setToast, setToastBookmark }) {
                   .slice(randomNumber, randomNumber + CHOOSENUMBER)
                   .map((item) => (
                     <li key={item.id}>
-                      <Card
-                        data={item}
-                        setToast={setToast}
-                        setToastBookmark={setToastBookmark}
-                      />
+                      <Card data={item} />
                     </li>
                   ))}
               </List>
@@ -59,11 +62,7 @@ function Home({ handleClick, isLoading, setToast, setToastBookmark }) {
                   .slice(0, 4)
                   .map((item) => (
                     <li key={item.id}>
-                      <Card
-                        data={item}
-                        setToast={setToast}
-                        setToastBookmark={setToastBookmark}
-                      />
+                      <Card data={item} />
                     </li>
                   ))}
               </List>
