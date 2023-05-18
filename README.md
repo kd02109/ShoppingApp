@@ -7,7 +7,7 @@
 - [디자인 링크](https://www.figma.com/file/TfWAvMXegGEJiS3etqOSfs/FE-S4-project?type=design&node-id=3%3A77&t=3LJWT6Y8o2tLK7f2-1)
 
 ## 기술스택
-<img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=black"><img src="https://img.shields.io/badge/Css-1572B6?style=for-the-badge&logo=Css&logoColor=white"><img src="https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=Redux&logoColor=purple"><img src="[https://img.shields.io/badge/Prettier-%5E2.8.8-yellow?logo=prettier](https://img.shields.io/badge/Prettier-%5E2.8.8-yellow?logo=prettier&style=for-the-badge)">
+<img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=black"><img src="https://img.shields.io/badge/Css-1572B6?style=for-the-badge&logo=Css&logoColor=white"><img src="https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=Redux&logoColor=purple"><img src="https://img.shields.io/badge/Prettier-%5E2.8.8-yellow?logo=prettier&style=for-the-badge">
 ## 구현 요소(명세서)
 ### Main page(메인 페이지)
 
