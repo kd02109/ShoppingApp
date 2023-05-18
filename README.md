@@ -332,6 +332,14 @@ export default getRandomForSlice(data){
 
 - 이렇게 해서 새로운 배열을 만들고 이를 state로 관리 할때 문제가 발생하였다. bookmark가 될시 별 마크의 색이 변화해야 하는데, 기존의 state형태를 고정으로 가지고 있기에 redux와 연동된 새로운 데이터를 받아오지 못하고 setState를 자식 컴포넌트에게 넘겨 수정해주어야 했다. 이는 불필요한 작업이라고 느껴서 기존의 방식처럼 number 데이터를 넘겨주는 형식을 사용하는 것으로 채택하였다. 
 - 만약 이렇게 뽑아온 배열을 state로 관리하지 않을시 북마크 클릭시 모든 상품 리스트가 재렌더링 되기 때문에, 사용 측면에서 불편함을 경험했다.
+- 그래서 기존의 RandomNum을 뽑아주는 형식을 사용하였고 코드를 최종적으로 다음과 같이 수정하였다.
+```js
+export default function getRandomForSlice(data, chooseNum) {
+  return Math.floor(Math.random() * data.length - chooseNum);
+}
+```
+- 뿌려줄 데이터의 개수가 변경, 혹은 전체 데이터의 개수가 변경될 것을 고려했습니다.
+- 렌더링 할 데이터의 개수가 변화할 경우 Home에서 상수로 관리하고 있는 변수만 조절할 경우 자동으로 렌더링 되도록 수정했습니다.
 
 
 ## 4. 헤더 컴포넌트의 햄버거 아이콘 클릭 전역에서 관리하기.
@@ -350,3 +358,73 @@ export default getRandomForSlice(data){
 ## 6. MODAL 버그 픽스
 - 기존에는 Modal을 Card 컴포넌트 안에 위치하게 하였습니다. 이때 정상적으로 작동하지만, 북마크 페이지에서 북마크를 해제할시 Card component가 unmount되면서 Modal 또한 강제로 종료되는 현상이 있었습니다. 
 - 따라서 Modal 컴포넌트를 전역에서 설정해서 redux를 통해 상태 관리를 하도록 수정하였습니다. 이를 통해 버그를 해결할 수 있었습니다. 
+
+## 7. 컴포넌트 수정 
+#### 1. Card 컴포넌트 수정 
+```js
+// ./pages/home.js
+            <section>
+              <Title>상품 리스트</Title>
+              <List>
+                {state
+                  .slice(randomNumber, randomNumber + CHOOSENUMBER)
+                  .map((item) => (
+                    <li key={item.id}>
+                      <Card data={item} />
+                    </li>
+                  ))}
+              </List>
+            </section>
+```
+위의 코드를 다음과 같이 Component로 분리하여 수정하였습니다. 
+```js
+            <CardList
+              title={"상품 리스트"}
+              state={state.slice(randomNumber, randomNumber + CHOOSENUMBER)}
+            />
+```
+#### 2. 문자열을 객체로 관리
+- 이전에는 직접 하드 타이핑 하는 식으로 문자열을 사용했습니다. 
+- 반복적으로 사용되는 문자열을 객체로 관리하여 실수가 나오는 부분을 줄였습니다. 
+```js
+// ./src/components/Description.jsx
+const cardType = {
+  product: "Product",
+  category: "Category",
+  brand: "Brand",
+  exhibition: "Exhibition",
+};
+```
+
+#### 3. 북마크페이지, 상품리스트 페이지 통합관리
+- 기존에는 뿌려주는 데이터만 다르고 동일한 페이지를 하드코딩해서 분리하여 사용하고 있었습니다.
+- 따라서 컴포넌트와 페이지의 역할을 분리했습니다. 두 페이지의 공통된 부분을 컴포넌트로 뽑아냈습니다. 각각의 페이지는 컴포넌트에 필요한 데이터를 정제하여 뿌려주는 역할을 하도록 수정했습니다. 
+
+#### 4. 숫자 타입을 통한 페이지 관리의 불명확성 
+- 숫자 타입으로 필터 컴포넌트를 관리하여 뿌려줄 데이터를 정했습니다.
+```js
+const [numState, setNumState] = useState(0);
+ {numState === 0 &&
+            state
+              .filter((item) => item.bookmarked)
+              .map((item) => (
+                <li key={item.id}>
+                  <Card data={item} />
+                </li>
+              ))}
+```
+- 이때의 문제점은 어떤 데이터를 적용하는지가 명확하지 않았으며, 데이터를 분류하는 방법도 명확히 알기 힘들다는 점을 알 수 있었습니다. 그래서 숫자가 아닌 상품 타입을 문자열로 작성하여 관리하도록 하였습니다. 
+
+```js
+const filterSet = {
+  all: "전체",
+  product: "상품",
+  categoryl: "카테고리",
+  exhibition: "기획전",
+  brand: "브랜드",
+};
+ {filterState === filterSet.all && (
+        <CardList state={state.slice(0, dataNum)} />
+      )}
+```
+- 다음과 같이 뿌려줄 데이터를 관리하는 필터를 문자열로 하여 명확히 코드를 보고 의도를 파악할 수 있도록 하였습니다.
