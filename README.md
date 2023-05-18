@@ -48,70 +48,71 @@
 - 상품리스트 페이지에 존재하는 필터링 버튼과 같은 버튼을 이용해 상품을 타입별로 필터해 보여줄 수 있어야 한다.
 
 ## 폴더구조
-📦CH4
- ┗ 📂fe-sprint-coz-shopping
- ┃ ┣ 📂.git
- ┃ ┣ 📂.husky
- ┃ ┣ 📂 node_modules
- ┃ ┣ 📂src
- ┃ ┃ ┣ 📂api
- ┃ ┃ ┃ ┗ 📜api.jsx // api불러오기
- ┃ ┃ ┣ 📂assest
- ┃ ┃ ┃ ┣ 📜all.png
- ┃ ┃ ┃ ┣ 📜brand.png
- ┃ ┃ ┃ ┣ 📜category.png
- ┃ ┃ ┃ ┣ 📜exhibition.png
- ┃ ┃ ┃ ┣ 📜logo.png
- ┃ ┃ ┃ ┗ 📜product.png
- ┃ ┃ ┣ 📂components
- ┃ ┃ ┃ ┣ 📜Bookmark.jsx
- ┃ ┃ ┃ ┣ 📜Card.jsx
- ┃ ┃ ┃ ┣ 📜CardList.jsx
- ┃ ┃ ┃ ┣ 📜Description.jsx
- ┃ ┃ ┃ ┣ 📜Dropdown.jsx
- ┃ ┃ ┃ ┣ 📜Filter.jsx
- ┃ ┃ ┃ ┣ 📜FilterList.jsx
- ┃ ┃ ┃ ┣ 📜Footer.jsx
- ┃ ┃ ┃ ┣ 📜Header.jsx
- ┃ ┃ ┃ ┣ 📜Loading.jsx
- ┃ ┃ ┃ ┣ 📜Modal.jsx
- ┃ ┃ ┃ ┣ 📜PageTamplet.jsx // 북마크 상품페이지 컴포넌트
- ┃ ┃ ┃ ┣ 📜Toast.jsx
- ┃ ┃ ┃ ┣ 📜ToastContainer.jsx
- ┃ ┃ ┃ ┗ 📜Xmark.jsx
- ┃ ┃ ┣ 📂hook
- ┃ ┃ ┃ ┣ 📜useApi.jsx
- ┃ ┃ ┃ ┗ 📜useClick.jsx //헤더의 햄버거 아이콘 click hook 
- ┃ ┃ ┣ 📂pages
- ┃ ┃ ┃ ┣ 📜Bookmark.jsx
- ┃ ┃ ┃ ┣ 📜Home.jsx
- ┃ ┃ ┃ ┣ 📜NotFound.jsx
- ┃ ┃ ┃ ┗ 📜ProductLists.jsx
- ┃ ┃ ┣ 📂redux  //redux reducer, store, action들을 정리
- ┃ ┃ ┃ ┣ 📂action
- ┃ ┃ ┃ ┃ ┗ 📜actions.js
- ┃ ┃ ┃ ┗ 📂reducer
- ┃ ┃ ┃ ┃ ┣ 📜hambegeReducer.js  //헤더의 햄버거 아이콘 관련 reducer
- ┃ ┃ ┃ ┃ ┣ 📜modalReducer.js   //모달 관련 reducer
- ┃ ┃ ┃ ┃ ┣ 📜reducer.js       // bookmark관련 reducer
- ┃ ┃ ┃ ┃ ┣ 📜rootReducer.js   // Root reducer
- ┃ ┃ ┃ ┃ ┣ 📜store.js         
- ┃ ┃ ┃ ┃ ┗ 📜toastReducer.js  // Toast UI관련 reducer
- ┃ ┃ ┣ 📂routers
- ┃ ┃ ┃ ┗ 📜Routers.jsx
- ┃ ┃ ┣ 📂util 
- ┃ ┃ ┃ ┗ 📜getRandomForSlice.js  
- ┃ ┃ ┣ 📜App.jsx
- ┃ ┃ ┣ 📜GlobalStyle.jsx
- ┃ ┃ ┣ 📜main.jsx
- ┃ ┃ ┗ 📜theme.js
- ┃ ┣ 📜.eslintrc.cjs
- ┃ ┣ 📜.gitignore
- ┃ ┣ 📜.prettierrc
- ┃ ┣ 📜index.html
- ┃ ┣ 📜package-lock.json
- ┃ ┣ 📜package.json
- ┃ ┣ 📜README.md
+
+📦CH4 <br>
+ ┗ 📂fe-sprint-coz-shopping <br>
+ ┃ ┣ 📂.git <br>
+ ┃ ┣ 📂.husky <br>
+ ┃ ┣ 📂 node_modules <br>
+ ┃ ┣ 📂src <br>
+ ┃ ┃ ┣ 📂api <br>
+ ┃ ┃ ┃ ┗ 📜api.jsx // api불러오기 <br>
+ ┃ ┃ ┣ 📂assest <br>
+ ┃ ┃ ┃ ┣ 📜all.png <br>
+ ┃ ┃ ┃ ┣ 📜brand.png <br>
+ ┃ ┃ ┃ ┣ 📜category.png <br>
+ ┃ ┃ ┃ ┣ 📜exhibition.png <br>
+ ┃ ┃ ┃ ┣ 📜logo.png <br>
+ ┃ ┃ ┃ ┗ 📜product.png <br>
+ ┃ ┃ ┣ 📂components <br>
+ ┃ ┃ ┃ ┣ 📜Bookmark.jsx <br>
+ ┃ ┃ ┃ ┣ 📜Card.jsx <br>
+ ┃ ┃ ┃ ┣ 📜CardList.jsx <br>
+ ┃ ┃ ┃ ┣ 📜Description.jsx <br>
+ ┃ ┃ ┃ ┣ 📜Dropdown.jsx <br>
+ ┃ ┃ ┃ ┣ 📜Filter.jsx <br>
+ ┃ ┃ ┃ ┣ 📜FilterList.jsx <br>
+ ┃ ┃ ┃ ┣ 📜Footer.jsx <br>
+ ┃ ┃ ┃ ┣ 📜Header.jsx <br>
+ ┃ ┃ ┃ ┣ 📜Loading.jsx <br>
+ ┃ ┃ ┃ ┣ 📜Modal.jsx <br>
+ ┃ ┃ ┃ ┣ 📜PageTamplet.jsx // 북마크 상품페이지  <br>컴포넌트
+ ┃ ┃ ┃ ┣ 📜Toast.jsx <br>
+ ┃ ┃ ┃ ┣ 📜ToastContainer.jsx <br>
+ ┃ ┃ ┃ ┗ 📜Xmark.jsx <br>
+ ┃ ┃ ┣ 📂hook <br>
+ ┃ ┃ ┃ ┣ 📜useApi.jsx <br>
+ ┃ ┃ ┃ ┗ 📜useClick.jsx //헤더의 햄버거 아이콘  <br>click hook 
+ ┃ ┃ ┣ 📂pages <br>
+ ┃ ┃ ┃ ┣ 📜Bookmark.jsx <br>
+ ┃ ┃ ┃ ┣ 📜Home.jsx <br>
+ ┃ ┃ ┃ ┣ 📜NotFound.jsx <br>
+ ┃ ┃ ┃ ┗ 📜ProductLists.jsx <br>
+ ┃ ┃ ┣ 📂redux  //redux reducer, store,  <br>action들을 정리
+ ┃ ┃ ┃ ┣ 📂action <br>
+ ┃ ┃ ┃ ┃ ┗ 📜actions.js <br>
+ ┃ ┃ ┃ ┗ 📂reducer <br>
+ ┃ ┃ ┃ ┃ ┣ 📜hambegeReducer.js  //헤더의 햄버거 아이콘 관련 reducer <br>
+ ┃ ┃ ┃ ┃ ┣ 📜modalReducer.js   //모달 관련 reducer <br>
+ ┃ ┃ ┃ ┃ ┣ 📜reducer.js       // bookmark관련 reducer <br>
+ ┃ ┃ ┃ ┃ ┣ 📜rootReducer.js   // Root reducer <br>
+ ┃ ┃ ┃ ┃ ┣ 📜store.js          <br>
+ ┃ ┃ ┃ ┃ ┗ 📜toastReducer.js  // Toast UI관련 reducer <br>
+ ┃ ┃ ┣ 📂routers <br>
+ ┃ ┃ ┃ ┗ 📜Routers.jsx <br>
+ ┃ ┃ ┣ 📂util  <br>
+ ┃ ┃ ┃ ┗ 📜getRandomForSlice.js   <br>
+ ┃ ┃ ┣ 📜App.jsx <br>
+ ┃ ┃ ┣ 📜GlobalStyle.jsx <br>
+ ┃ ┃ ┣ 📜main.jsx <br>
+ ┃ ┃ ┗ 📜theme.js <br>
+ ┃ ┣ 📜.eslintrc.cjs <br>
+ ┃ ┣ 📜.gitignore <br>
+ ┃ ┣ 📜.prettierrc <br>
+ ┃ ┣ 📜index.html <br>
+ ┃ ┣ 📜package-lock.json <br>
+ ┃ ┣ 📜package.json <br>
+ ┃ ┣ 📜README.md <br>
  ┃ ┗ 📜vite.config.js
 
 ## 최종 완성
