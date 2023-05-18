@@ -76,19 +76,19 @@
  ┃ ┃ ┃ ┣ 📜Header.jsx <br>
  ┃ ┃ ┃ ┣ 📜Loading.jsx <br>
  ┃ ┃ ┃ ┣ 📜Modal.jsx <br>
- ┃ ┃ ┃ ┣ 📜PageTamplet.jsx // 북마크 상품페이지  <br>컴포넌트
+ ┃ ┃ ┃ ┣ 📜PageTamplet.jsx // 북마크 상품페이지 컴포넌트  <br>
  ┃ ┃ ┃ ┣ 📜Toast.jsx <br>
  ┃ ┃ ┃ ┣ 📜ToastContainer.jsx <br>
  ┃ ┃ ┃ ┗ 📜Xmark.jsx <br>
  ┃ ┃ ┣ 📂hook <br>
  ┃ ┃ ┃ ┣ 📜useApi.jsx <br>
- ┃ ┃ ┃ ┗ 📜useClick.jsx //헤더의 햄버거 아이콘  <br>click hook 
+ ┃ ┃ ┃ ┗ 📜useClick.jsx //헤더의 햄버거 아이콘  click hook  <br>
  ┃ ┃ ┣ 📂pages <br>
  ┃ ┃ ┃ ┣ 📜Bookmark.jsx <br>
  ┃ ┃ ┃ ┣ 📜Home.jsx <br>
  ┃ ┃ ┃ ┣ 📜NotFound.jsx <br>
  ┃ ┃ ┃ ┗ 📜ProductLists.jsx <br>
- ┃ ┃ ┣ 📂redux  //redux reducer, store,  <br>action들을 정리
+ ┃ ┃ ┣ 📂redux  //redux reducer, store,action들을 정리  <br>
  ┃ ┃ ┃ ┣ 📂action <br>
  ┃ ┃ ┃ ┃ ┗ 📜actions.js <br>
  ┃ ┃ ┃ ┗ 📂reducer <br>
