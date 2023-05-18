@@ -6,6 +6,8 @@
 - 에자일 방법론 중 스크럼 방법을 활용해서 진행합니다. github의 프로젝트를 활용했습니다. [링크](https://github.com/users/kd02109/projects/1/views/1)
 - [디자인 링크](https://www.figma.com/file/TfWAvMXegGEJiS3etqOSfs/FE-S4-project?type=design&node-id=3%3A77&t=3LJWT6Y8o2tLK7f2-1)
 
+## 기술스택
+<img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=black"><img src="https://img.shields.io/badge/Css-1572B6?style=for-the-badge&logo=Css&logoColor=white"><img src="https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=Redux&logoColor=purple"><img src="https://img.shields.io/badge/Prettier-%5E2.8.8-yellow?logo=prettier&style=for-the-badge"><img src="https://img.shields.io/badge/Eslint-%5E8.38.0-green?logo=eslint&style=for-the-badge"><img src="https://img.shields.io/badge/Vite-%5E4.3.0-skyblue?logo=vite&style=for-the-badge" /><img src="https://img.shields.io/badge/ReactRouter-%5E6.10.0-red?logo=reactrouter&style=for-the-badge"/><img src ="https://img.shields.io/badge/ReactQuery-%5E4.29.5-mint?logo=ReactQuery&style=for-the-badge" ><img src="https://img.shields.io/badge/Axios-%5E1.4.0-black?logo=axios&style=for-the-badge"/>
 ## 구현 요소(명세서)
 ### Main page(메인 페이지)
 
@@ -45,44 +47,9 @@
 - 사용자가 북마크 한 상품 들을 확인할 수 있는 페이지로 무한 스크롤이 가능해야 한다.
 - 상품리스트 페이지에 존재하는 필터링 버튼과 같은 버튼을 이용해 상품을 타입별로 필터해 보여줄 수 있어야 한다.
 
+## 최종 완성
+https://github.com/kd02109/fe-sprint-coz-shopping/assets/57277708/703579a2-1299-48e5-9075-df16ebfa3259
 
-### Main page(메인 페이지)
-
-- path: /
-- Header와 Footer를 갖고 있으며, 해당 GNB와 Footer는 어느 페이지를 가더라도 항상 존재해야 한다.
-  - Header 내 햄버거 버튼 존재, 햄버거 버튼 펼칠 시 내부에
-      - Header는 페이지 내 스크롤이 발생하더라도 항상 상단에 붙어있어야 한다.
-      - 메인로고 → 클릭하면 / 페이지로 이동
-      - 햄버거 버튼
-          - 상품리스트 → 클릭하면 /products/list 페이지로 이동
-          - 북마크페이지 → 클릭하면 /bookmark 페이지로 이동
-  - Footer
-      - 일련의 텍스트 정보들
-- 해당 메인페이지에서는
-    - 모든 타입의 상품 정보를 4개 보여준다 (필터기능 없이)
-      - 보여지는 상품의 타입은 혼합되어 있을 수 있다 (상품, 카테고리, 기획전, 브랜드)
-    - 모든 타입의 북마크 된 상품 정보를 4개 보여준다 (필터기능 없이)
-      - 보여지는 상품의 타입은 혼합되어 있을 수 있다 (상품, 카테고리, 기획전, 브랜드)
-<hr/>
-
-### Products list page(상품리스트 페이지)
-
-- path: /products/list
-- 서버에서 제공하는 상품 리스트들을 확인할 수 있는 페이지이며   
-  - 무한 스크롤을 통해 상품들을 계속 보여줄 수 있어야 한다 .무한스크롤은 쿼리파라미터를 통한 매번 api call이 아닌, 최초 1번 api call을 통해 전체 데이터를 받아온 후 적용합니다.
-- 상품은 각 상품별로 타입이 존재한다. (상품, 카테고리, 기획전, 브랜드)
-- 상단의 필터 버튼을 통해 상품을 타입별로 조회해 보여줄 수 있어야 한다.
-- 각 상품을 클릭하면 해당 상품의 사진을 보여주는 모달을 띄울 수 있어야 한다.
-- 각 상품에 존재하는 북마크 버튼을 눌러 원하는 상품을 북마크 할 수 있어야 한다.
-- 이미 북마크 된 상품의 경우, 북마크 버튼에 표시를 해주어야 하며 다시 한 번 북마크 버튼을 클릭 시 해당 상품을 북마크에서 삭제한다.
-- 북마크 버튼을 클릭하여 북마크에 추가 할 때 그리고 삭제할 때는 사용자에게 알림 토스트가 표시되어야 한다.
-<hr/>
-
-### Bookmark page(북마크 페이지)
-
-- path: /bookmark
-- 사용자가 북마크 한 상품 들을 확인할 수 있는 페이지로 무한 스크롤이 가능해야 한다.
-- 상품리스트 페이지에 존재하는 필터링 버튼과 같은 버튼을 이용해 상품을 타입별로 필터해 보여줄 수 있어야 한다.
 
 # 진행 과정 정리 
 
@@ -351,13 +318,25 @@ export default function getRandomForSlice(data, chooseNum) {
 - 최상위 컴포넌트인 APP에서 전역으로 toast관련 state를 설정하여 각각의 페이지의 카드 컴포넌트에 뿌려주는 방식으로 tost UI를 만들었습니다. 이때 마주친 문제는 총 두 가지 였습니다. 
   1. state 관리가 어려웠습니다. 그렇게 깊은 구조도 아니지만, state가 잘못 되었을 시 수정 하는 방법이 쉽지 않았습니다.
   2. 하나의 toast ui를 관리하는 것은 충분했지만, 배열 형식으로 state를 관리하고자 할때 하드 코딩이 되고 하나의 state에 너무 많은 값을 관리하게 되었습니다.
+
+
+https://github.com/kd02109/fe-sprint-coz-shopping/assets/57277708/2afe1100-1ddc-4ffb-b4bb-56fbe0004549
+
 - useReducer를 활용하면 데이터가 복잡해지는 구조는 해결할 수 있지만, 여전히 state 관리가 어렵다는 문제가 있었습니다. 따라서 contextAPI와 함께 사용을 해야 했습니다. 하지만 현재 전역 상태관리로 redux를 사용하고 있기 때문에 redux를 활용하기로 하였습니다. 
 - 비동기로 동작하여 데이터를 처리해야 하기 때문에 관련 middleware인 redux-thunk를 설치하여 새로운 reducer를 만들었습니다. (toastReducer)
 - toastReducer는 기본적으로 데이터를 비워둔 상태로 관리하는 것을 목표로 했습니다. 빈 배열을 초기 데이터로 설정하여 새로운 데이터가 들어오면 하나씩 쌓이고 처음 들어온 데이터 부터 제거되는 queue를 차용해서 reducer의 구조를 작성했습니다.
 
+
+https://github.com/kd02109/fe-sprint-coz-shopping/assets/57277708/948d77bf-1c1c-4be4-90be-18f3f15a0e93
+
+
 ## 6. MODAL 버그 픽스
-- 기존에는 Modal을 Card 컴포넌트 안에 위치하게 하였습니다. 이때 정상적으로 작동하지만, 북마크 페이지에서 북마크를 해제할시 Card component가 unmount되면서 Modal 또한 강제로 종료되는 현상이 있었습니다. 
+- 기존에는 Modal을 Card 컴포넌트 안에 위치하게 하였습니다. 이때 정상적으로 작동하지만, 북마크 페이지에서 북마크를 해제할시 Card component가 unmount되면서 Modal 또한 강제로 종료되는 현상이 있었습니다. (위의 영상에서 확인할 수 있습니다.)
 - 따라서 Modal 컴포넌트를 전역에서 설정해서 redux를 통해 상태 관리를 하도록 수정하였습니다. 이를 통해 버그를 해결할 수 있었습니다. 
+
+
+https://github.com/kd02109/fe-sprint-coz-shopping/assets/57277708/32ca3a48-bfb4-4c55-9801-0879a5cea739
+
 
 ## 7. 컴포넌트 수정 
 #### 1. Card 컴포넌트 수정 
