@@ -27,7 +27,7 @@ const Container = styled.div`
   animation: ${slideIn} 1s ease-in-out;
 `;
 
-export default function Toast({ toastBoomark }) {
+export default function Toast({ toastBoomark, label, ...args }) {
   return (
     <>
       {toastBoomark ? (
@@ -44,7 +44,11 @@ export default function Toast({ toastBoomark }) {
               fill="#FFD361"
             />
           </svg>
-          <span>상품이 북마크에 추가되었습니다.</span>
+          {label ? (
+            <span>{label}</span>
+          ) : (
+            <span>상품이 북마크에 추가되었습니다.</span>
+          )}
         </Container>
       ) : (
         <Container>
@@ -61,7 +65,11 @@ export default function Toast({ toastBoomark }) {
               fillOpacity="1"
             />
           </svg>
-          <span>상품이 북마크에서 제거되었습니다.</span>
+          {label ? (
+            <span>{label}</span>
+          ) : (
+            <span>상품이 북마크에서 제거되었습니다.</span>
+          )}
         </Container>
       )}
     </>

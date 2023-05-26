@@ -30,7 +30,6 @@ export default function Bookmark({ bookmark, id, ...arg }) {
       {bookmark ? (
         <>
           <Svg
-            {...arg}
             onClick={handleBookmark}
             xmlns="http://www.w3.org/2000/svg"
             width="24"

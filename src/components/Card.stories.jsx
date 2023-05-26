@@ -1,9 +1,13 @@
 import React from "react";
 
-import Bookmark from "./Bookmark";
+import Card from "./Card";
 
 import set from "../redux/reducer/store";
+
 import { Provider } from "react-redux";
+import { ThemeProvider } from "styled-components";
+import theme from "../theme";
+import GlobalStyle from "../GlobalStyle";
 
 const { store } = set;
 
@@ -12,20 +16,21 @@ export default {
    * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
    * to learn how to generate automatic titles
    */
-  title: "Bookmark",
-  component: Bookmark,
+  title: "Card",
+  component: Card,
   decorators: [
     (Story) => (
       <Provider store={store}>
-        <Story />
+        <ThemeProvider theme={theme}>
+          <GlobalStyle />
+          <Story />
+        </ThemeProvider>
       </Provider>
     ),
   ],
+  argTypes: {},
 };
 
-export const Star = {
-  args: {
-    primary: true,
-    bookmark: true,
-  },
+export const CardComponent = {
+  args: {},
 };

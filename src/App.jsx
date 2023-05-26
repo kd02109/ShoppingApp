@@ -13,7 +13,6 @@ function App() {
   const toast = useSelector((state) => state.toast);
   const modal = useSelector((state) => state.modal);
   //api 불러오기
-  console.log(modal);
   const { data } = useApi();
 
   //query 데이터 redux에 저장하기
