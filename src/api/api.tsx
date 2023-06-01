@@ -11,6 +11,7 @@ export interface APIData {
   image_url: string | null;
   brand_image_url: string | null;
   follower: number | null;
+  bookmarked?: boolean;
 }
 
 const getList = () =>

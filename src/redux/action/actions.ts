@@ -10,34 +10,46 @@ import { CLOSE_TOAST, SHOW_TOAST } from "../reducer/toastReducer";
 import { APIData } from "../../api/api";
 
 //bookmarkReducer
-export const dispatchData = (data: APIData[]) => {
+interface DispatchData {
+  type: "SETINITIALVALUE";
+  data: APIData[];
+}
+export const dispatchData = (data: APIData[]): DispatchData => {
   return {
     type: SETINITIALVALUE,
     data,
   };
 };
 
-export const dispatchBookmark = (id: number) => {
+interface DispatchBookmark {
+  type: "BOOKMARKED";
+  id: number;
+}
+export const dispatchBookmark = (id: number): DispatchBookmark => {
   return {
     type: BOOKMARKED,
     id,
   };
 };
 
-export const dispatchUnBookmark = (id: number) => {
+interface DispatchUnBookMark {
+  type: "UNBOOKMARKED";
+  id: number;
+}
+export const dispatchUnBookmark = (id: number): DispatchUnBookMark => {
   return {
     type: UNBOOKMARKED,
     id,
   };
 };
 // hambeger Reducer
-export const dispatchHambeger = () => {
+export const dispatchHambeger = (): { type: "HAMBEGER_OPEN" } => {
   return {
     type: HAMBEGER_OPEN,
   };
 };
 
-export const dispatchHambegerClose = () => {
+export const dispatchHambegerClose = (): { type: "HAMBEGER_CLOSE" } => {
   return {
     type: HAMBEGER_CLOSE,
   };
@@ -55,12 +67,19 @@ export const dispatchToastOpen = (isBookmarked: boolean, id: number) => {
 
 //modalReducer
 
+interface DispatchModalOpen {
+  type: "MODAL_OPENED";
+  id: number;
+  image: string;
+  title: string;
+  bookmark: boolean;
+}
 export const dispatchModalOpen = (
   id: number,
   image: string,
   title: string,
   bookmark: boolean
-) => ({
+): DispatchModalOpen => ({
   type: MODAL_OPENED,
   id,
   image,
@@ -68,8 +87,12 @@ export const dispatchModalOpen = (
   title,
 });
 
-export const dispatchModalClose = () => ({ type: MODAL_CLOSED });
+export const dispatchModalClose = (): { type: "MODAL_CLOSED" } => ({
+  type: MODAL_CLOSED,
+});
 
-export const dispatchChangeModalBookMark = () => ({
+export const dispatchChangeModalBookMark = (): {
+  type: "MODAL_BOOKMARK_CHANGED";
+} => ({
   type: MODAL_BOOKMARK_CHANGED,
 });
