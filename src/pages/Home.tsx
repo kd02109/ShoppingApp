@@ -6,6 +6,7 @@ import { useState } from "react";
 import useClick from "../hook/useClick";
 import useApi from "../hook/useApi";
 import CardList from "../components/CardList";
+import { RootState } from "../redux/reducer/store";
 
 const Main = styled.main`
   margin-top: 24px;
@@ -17,7 +18,9 @@ const CHOOSENUMBER = 4;
 function Home() {
   const { isLoading } = useApi();
 
-  const state = useSelector((state) => state.bookmark);
+  const state = useSelector<RootState, RootState["bookmark"]>(
+    (state) => state.bookmark
+  );
   const [randomNumber, setRandomNumber] = useState(
     getRandomForSlice(state, CHOOSENUMBER)
   );
@@ -32,11 +35,21 @@ function Home() {
           <>
             <CardList
               title={"상품 리스트"}
-              state={state.slice(randomNumber, randomNumber + CHOOSENUMBER)}
+              state={
+                Array.isArray(state)
+                  ? state.slice(randomNumber, randomNumber + CHOOSENUMBER)
+                  : null
+              }
             />
             <CardList
               title={"북마크 리스트"}
-              state={state.filter((item) => item.bookmarked).slice(0, 4)}
+              state={
+                Array.isArray(state)
+                  ? state
+                      .filter((item) => item.bookmarked)
+                      .slice(0, CHOOSENUMBER)
+                  : null
+              }
             />
           </>
         )}
