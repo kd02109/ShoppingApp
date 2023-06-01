@@ -73,12 +73,14 @@ interface DispatchModalOpen {
   image: string;
   title: string;
   bookmark: boolean;
+  isModalOpened?: boolean;
 }
 export const dispatchModalOpen = (
   id: number,
   image: string,
   title: string,
-  bookmark: boolean
+  bookmark: boolean,
+  isModalOpened?: boolean
 ): DispatchModalOpen => ({
   type: MODAL_OPENED,
   id,

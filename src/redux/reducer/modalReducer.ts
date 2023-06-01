@@ -12,10 +12,10 @@ export const MODAL_CLOSED = "MODAL_CLOSED";
 export const MODAL_BOOKMARK_CHANGED = "MODAL_BOOKMARK_CHANGED";
 
 const initialValue = {
-  image: null,
-  title: null,
-  bookmark: null,
-  id: null,
+  image: "",
+  title: "",
+  bookmark: false,
+  id: 100000,
   isModalOpened: false,
 };
 
