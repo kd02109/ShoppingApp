@@ -1,20 +1,28 @@
+import { APIData } from "../../api/api";
+
 export const BOOKMARKED = "BOOKMARKED";
 export const UNBOOKMARKED = "UNBOOKMARKED";
 export const SETINITIALVALUE = "SETINITIALVALUE";
 
-const storage = JSON.parse(window.localStorage.getItem("persist:root"));
-let bookmarkData;
+const storage = JSON.parse(window.localStorage.getItem("persist:root")!);
+let bookmarkData: APIData[] | undefined;
 if (storage) {
   bookmarkData = JSON.parse(storage.bookmark);
 }
 
-const initialState = storage ? bookmarkData : [];
+const initialState: APIData[] | undefined = storage ? bookmarkData : [];
 
-const bookmarkReducer = (state = initialState, action) => {
+interface BookmarkAction {
+  type: "BOOKMARKED" | "UNBOOKMARKED" | "SETINITIALVALUE";
+  data: APIData[];
+  id: number;
+}
+
+const bookmarkReducer = (state = initialState, action: BookmarkAction) => {
   const { type, data, id } = action;
   switch (type) {
     case BOOKMARKED: {
-      return state.map((item) => {
+      return state?.map((item) => {
         if (item.id === id) {
           return {
             ...item,
@@ -25,8 +33,8 @@ const bookmarkReducer = (state = initialState, action) => {
       });
     }
 
-    case UNBOOKMARKED:
-      return state.map((item) => {
+    case UNBOOKMARKED: {
+      return state?.map((item) => {
         if (item.id === id) {
           return {
             ...item,
@@ -35,7 +43,7 @@ const bookmarkReducer = (state = initialState, action) => {
         }
         return item;
       });
-
+    }
     case SETINITIALVALUE: {
       if (data) {
         return data;
@@ -43,6 +51,7 @@ const bookmarkReducer = (state = initialState, action) => {
       if (!data) {
         return state;
       }
+      return state;
     }
     default:
       return state;

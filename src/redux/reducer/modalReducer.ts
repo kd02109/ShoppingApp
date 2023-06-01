@@ -19,7 +19,16 @@ const initialValue = {
   isModalOpened: false,
 };
 
-const modalReducer = (state = initialValue, actions) => {
+interface ModalActions {
+  type: "MODAL_OPENED" | "MODAL_CLOSED" | "MODAL_BOOKMARK_CHANGED";
+  image: null | string;
+  title: null | string;
+  bookmark: null | boolean;
+  id: null | number;
+  isModalOpened: boolean;
+}
+
+const modalReducer = (state = initialValue, actions: ModalActions) => {
   const { image, title, type, id, bookmark } = actions;
   switch (type) {
     case MODAL_OPENED:

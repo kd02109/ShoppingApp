@@ -1,3 +1,4 @@
+import { AnyAction, Dispatch } from "redux";
 import { HAMBEGER_CLOSE, HAMBEGER_OPEN } from "../reducer/hambegeReducer";
 import {
   MODAL_BOOKMARK_CHANGED,
@@ -6,23 +7,24 @@ import {
 } from "../reducer/modalReducer";
 import { BOOKMARKED, SETINITIALVALUE, UNBOOKMARKED } from "../reducer/reducer";
 import { CLOSE_TOAST, SHOW_TOAST } from "../reducer/toastReducer";
+import { APIData } from "../../api/api";
 
 //bookmarkReducer
-export const dispatchData = (data) => {
+export const dispatchData = (data: APIData[]) => {
   return {
     type: SETINITIALVALUE,
     data,
   };
 };
 
-export const dispatchBookmark = (id) => {
+export const dispatchBookmark = (id: number) => {
   return {
     type: BOOKMARKED,
     id,
   };
 };
 
-export const dispatchUnBookmark = (id) => {
+export const dispatchUnBookmark = (id: number) => {
   return {
     type: UNBOOKMARKED,
     id,
@@ -42,8 +44,8 @@ export const dispatchHambegerClose = () => {
 };
 
 //toastReducer
-export const dispatchToastOpen = (isBookmarked, id) => {
-  return (dispatch) => {
+export const dispatchToastOpen = (isBookmarked: boolean, id: number) => {
+  return (dispatch: Dispatch<AnyAction>) => {
     dispatch({ type: SHOW_TOAST, isBookmarked, id });
     setTimeout(() => {
       dispatch({ type: CLOSE_TOAST, isBookmarked, id });
@@ -53,7 +55,12 @@ export const dispatchToastOpen = (isBookmarked, id) => {
 
 //modalReducer
 
-export const dispatchModalOpen = (id, image, title, bookmark) => ({
+export const dispatchModalOpen = (
+  id: number,
+  image: string,
+  title: string,
+  bookmark: boolean
+) => ({
   type: MODAL_OPENED,
   id,
   image,
