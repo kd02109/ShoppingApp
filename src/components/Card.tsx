@@ -78,11 +78,11 @@ export default function Card({ data }: Prop) {
         </ImgBox>
         <Description
           type={data.type}
-          title={data.title ? data.title : data.brand_name}
-          follower={data.follower}
-          discount={data.discountPercentage}
-          price={data.price}
-          sub={data.sub_title}
+          title={data.title ? data.title! : data.brand_name!}
+          follower={data.follower!}
+          discount={data.discountPercentage!}
+          price={data.price!}
+          sub={data.sub_title!}
         />
       </Article>
     </>

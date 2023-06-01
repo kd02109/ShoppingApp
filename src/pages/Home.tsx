@@ -38,7 +38,7 @@ function Home() {
               state={
                 Array.isArray(state)
                   ? state.slice(randomNumber, randomNumber + CHOOSENUMBER)
-                  : null
+                  : []
               }
             />
             <CardList
@@ -48,7 +48,7 @@ function Home() {
                   ? state
                       .filter((item) => item.bookmarked)
                       .slice(0, CHOOSENUMBER)
-                  : null
+                  : []
               }
             />
           </>

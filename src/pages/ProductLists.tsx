@@ -7,7 +7,7 @@ function ProductLists() {
     (state) => state.bookmark
   );
 
-  return <PageTemplate state={state} />;
+  return <PageTemplate state={state!} />;
 }
 
 export default ProductLists;

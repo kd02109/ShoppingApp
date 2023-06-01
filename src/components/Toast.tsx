@@ -27,7 +27,11 @@ const Container = styled.div`
   animation: ${slideIn} 1s ease-in-out;
 `;
 
-export default function Toast({ toastBoomark, label, ...args }) {
+interface Prop {
+  toastBoomark: boolean;
+  label?: string;
+}
+export default function Toast({ toastBoomark, label, ...args }: Prop) {
   return (
     <>
       {toastBoomark ? (

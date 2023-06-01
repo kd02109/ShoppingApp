@@ -5,6 +5,7 @@ import useClick from "../hook/useClick";
 import CardList from "../components/CardList";
 import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
+import { APIData } from "../api/api";
 
 const Main = styled.main`
   margin-top: 24px;
@@ -33,8 +34,12 @@ const itemSetType = {
   brand: "Brand",
   exhibition: "Exhibition",
 };
+interface Prop {
+  state: APIData[];
+}
+
 const BASENUM = 30;
-function PageTemplate({ state }) {
+function PageTemplate({ state }: Prop) {
   const [filterState, setFilterState] = useState("전체");
   const { onClick } = useClick();
   // 무한 스크롤 구현

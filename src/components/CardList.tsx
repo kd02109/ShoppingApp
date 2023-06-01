@@ -17,7 +17,7 @@ const List = styled.ul`
 
 interface CardListProp {
   state: APIData[];
-  title: string;
+  title?: string;
 }
 
 export default function CardList({ state, title }: CardListProp) {

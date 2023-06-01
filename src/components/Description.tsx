@@ -41,6 +41,15 @@ const cardType = {
   exhibition: "Exhibition",
 };
 
+interface Prop {
+  type: string;
+  title: string;
+  follower: number;
+  discount: number;
+  price: string;
+  sub: string;
+}
+
 export default function Description({
   type,
   title,
@@ -48,7 +57,7 @@ export default function Description({
   discount,
   price,
   sub,
-}) {
+}: Prop) {
   if (type === cardType.product) {
     return (
       <Container>
