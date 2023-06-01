@@ -9,20 +9,12 @@ import ToastContainer from "./components/ToastContainer";
 import Modal from "./components/Modal";
 import { RootState } from "./redux/reducer/store";
 
-export interface ModalOPtion {
-  id: number;
-  image: string;
-  title: string;
-  bookmark: boolean;
-  isModalOpened: boolean;
-}
-
 function App() {
   // toast item 불러오기
   const toast = useSelector<RootState, RootState["toast"]>(
     (state) => state.toast
   );
-  const modal = useSelector<RootState, RootState["modal"] | ModalOPtion>(
+  const modal = useSelector<RootState, RootState["modal"]>(
     (state) => state.modal
   );
   //api 불러오기

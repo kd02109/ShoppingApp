@@ -21,10 +21,10 @@ const initialValue = {
 
 interface ModalActions {
   type: "MODAL_OPENED" | "MODAL_CLOSED" | "MODAL_BOOKMARK_CHANGED";
-  image: null | string;
-  title: null | string;
-  bookmark: null | boolean;
-  id: null | number;
+  image: string;
+  title: string;
+  bookmark: boolean;
+  id: number;
   isModalOpened: boolean;
 }
 

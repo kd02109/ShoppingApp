@@ -79,8 +79,7 @@ export const dispatchModalOpen = (
   id: number,
   image: string,
   title: string,
-  bookmark: boolean,
-  isModalOpened?: boolean
+  bookmark: boolean
 ): DispatchModalOpen => ({
   type: MODAL_OPENED,
   id,
