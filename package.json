@@ -59,7 +59,7 @@
     "vite": "^4.3.0"
   },
   "lint-staged": {
-    "**/*.{js, jsx}": [
+    "./src/*.{js, jsx}": [
       "npm run lint"
     ]
   }
