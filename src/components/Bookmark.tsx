@@ -6,15 +6,22 @@ import {
   dispatchToastOpen,
   dispatchUnBookmark,
 } from "../redux/action/actions";
+import { BaseSyntheticEvent } from "react";
+import { AppDispatch } from "../redux/reducer/store";
 
 const Svg = styled.svg`
   cursor: pointer;
   margin: 10px;
 `;
 
-export default function Bookmark({ bookmark, id, ...arg }) {
-  const dispatch = useDispatch();
-  const handleBookmark = (event) => {
+interface BookmarkProp {
+  bookmark: boolean;
+  id: number;
+}
+
+export default function Bookmark({ bookmark, id }: BookmarkProp) {
+  const dispatch: AppDispatch = useDispatch();
+  const handleBookmark = (event: BaseSyntheticEvent) => {
     event.stopPropagation();
     dispatch(dispatchChangeModalBookMark());
     if (bookmark) {

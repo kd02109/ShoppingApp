@@ -10,10 +10,10 @@ import { CLOSE_TOAST, SHOW_TOAST } from "../reducer/toastReducer";
 import { APIData } from "../../api/api";
 
 //bookmarkReducer
-interface DispatchData {
+export type DispatchData = {
   type: "SETINITIALVALUE";
   data: APIData[];
-}
+};
 export const dispatchData = (data: APIData[]): DispatchData => {
   return {
     type: SETINITIALVALUE,
@@ -21,10 +21,10 @@ export const dispatchData = (data: APIData[]): DispatchData => {
   };
 };
 
-interface DispatchBookmark {
+export type DispatchBookmark = {
   type: "BOOKMARKED";
   id: number;
-}
+};
 export const dispatchBookmark = (id: number): DispatchBookmark => {
   return {
     type: BOOKMARKED,
@@ -32,10 +32,10 @@ export const dispatchBookmark = (id: number): DispatchBookmark => {
   };
 };
 
-interface DispatchUnBookMark {
+export type DispatchUnBookMark = {
   type: "UNBOOKMARKED";
   id: number;
-}
+};
 export const dispatchUnBookmark = (id: number): DispatchUnBookMark => {
   return {
     type: UNBOOKMARKED,

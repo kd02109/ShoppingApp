@@ -2,9 +2,9 @@ import { applyMiddleware, legacy_createStore } from "redux";
 import logger from "redux-logger";
 import rootReducer from "./rootReducer";
 import persistStore from "redux-persist/es/persistStore";
-import thunk from "redux-thunk";
+import thunk, { ThunkMiddleware } from "redux-thunk";
 
-const middlewaresApply = applyMiddleware(logger, thunk);
+const middlewaresApply = applyMiddleware(logger, thunk as ThunkMiddleware);
 
 const store = legacy_createStore(rootReducer, middlewaresApply);
 

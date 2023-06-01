@@ -14,8 +14,8 @@ const initialState: APIData[] | undefined = storage ? bookmarkData : [];
 
 interface BookmarkAction {
   type: "BOOKMARKED" | "UNBOOKMARKED" | "SETINITIALVALUE";
-  data: APIData[];
-  id: number;
+  data?: APIData[];
+  id?: number;
 }
 
 const bookmarkReducer = (state = initialState, action: BookmarkAction) => {

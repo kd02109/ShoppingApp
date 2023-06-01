@@ -21,11 +21,11 @@ const initialValue = {
 
 interface ModalActions {
   type: "MODAL_OPENED" | "MODAL_CLOSED" | "MODAL_BOOKMARK_CHANGED";
-  image: string;
-  title: string;
-  bookmark: boolean;
-  id: number;
-  isModalOpened: boolean;
+  image?: string;
+  title?: string;
+  bookmark?: boolean;
+  id?: number;
+  isModalOpened?: boolean;
 }
 
 const modalReducer = (state = initialValue, actions: ModalActions) => {
