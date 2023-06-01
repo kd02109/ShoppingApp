@@ -11,7 +11,9 @@ module.exports = {
     "plugin:react-hooks/recommended",
     "plugin:prettier/recommended",
     "plugin:storybook/recommended",
+    "plugin:@typescript-eslint/recommended",
   ],
+  parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaVersion: "latest",
     sourceType: "module",
