@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Card from "./Card";
+import { APIData } from "../api/api";
 
 const Title = styled.h2`
   font-size: ${(props) => props.theme.font.medium};
@@ -14,7 +15,12 @@ const List = styled.ul`
   }
 `;
 
-export default function CardList({ state, title }) {
+interface CardListProp {
+  state: APIData[];
+  title: string;
+}
+
+export default function CardList({ state, title }: CardListProp) {
   return (
     <section>
       {title && <Title>{title}</Title>}
