@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "tsc && vite build",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "postinstall": "husky install",
@@ -20,6 +20,7 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@reduxjs/toolkit": "^1.9.5",
     "@tanstack/react-query": "^4.29.5",
+    "@types/redux-logger": "^3.0.9",
     "axios": "^1.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -43,6 +44,10 @@
     "@tanstack/eslint-plugin-query": "^4.29.9",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
+    "@types/redux": "^3.6.0",
+    "@types/styled-components": "^5.1.26",
+    "@typescript-eslint/eslint-plugin": "^5.59.8",
+    "@typescript-eslint/parser": "^5.59.8",
     "@vitejs/plugin-react": "^4.0.0-beta.0",
     "eslint": "^8.38.0",
     "eslint-config-prettier": "^8.8.0",
@@ -56,6 +61,7 @@
     "prettier": "^2.8.8",
     "prop-types": "^15.8.1",
     "storybook": "^7.0.17",
+    "typescript": "^5.0.4",
     "vite": "^4.3.0"
   },
   "lint-staged": {

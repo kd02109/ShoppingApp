@@ -8,6 +8,7 @@ import {
   dispatchHambeger,
   dispatchHambegerClose,
 } from "../redux/action/actions";
+import { RootState } from "../redux/reducer/store";
 
 const Head = styled.header`
   height: 80px;
@@ -40,7 +41,9 @@ const LeftBox = styled.div`
 `;
 
 export default function Header() {
-  const hambegerState = useSelector((state) => state.hamberger);
+  const hambegerState = useSelector<RootState, RootState["hamberger"]>(
+    (state) => state.hamberger
+  );
   const dispatch = useDispatch();
   const onClick = () => {
     if (hambegerState) {

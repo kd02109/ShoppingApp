@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import Toast from "./Toast";
+import { RootState } from "../redux/reducer/store";
 
 const Container = styled.div`
   display: flex;
@@ -15,7 +16,9 @@ const Container = styled.div`
 `;
 
 export default function ToastContainer() {
-  const state = useSelector((state) => state.toast);
+  const state = useSelector<RootState, RootState["toast"]>(
+    (state) => state.toast
+  );
   return (
     <Container>
       {state.map((item, index) => (

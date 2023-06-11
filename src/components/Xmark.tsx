@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { dispatchModalClose } from "../redux/action/actions";
+import { AppDispatch } from "../redux/reducer/store";
 
 const Svg = styled.svg`
   position: absolute;
@@ -11,7 +12,7 @@ const Svg = styled.svg`
 `;
 
 export default function Xmark() {
-  const dispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
   return (
     <Svg
       xmlns="http://www.w3.org/2000/svg"

@@ -16,7 +16,10 @@ const ModalBackGround = styled.div`
   align-items: center;
 `;
 
-const ModalImage = styled.div`
+interface ImageProp {
+  imgSrc: string;
+}
+const ModalImage = styled.div<ImageProp>`
   width: 744px;
   height: 480px;
   background-image: url(${(props) => props.imgSrc});
@@ -42,7 +45,13 @@ const ModalImage = styled.div`
   }
 `;
 
-export default function Modal({ title, picture, bookmark, id }) {
+interface Prop {
+  title: string;
+  picture: string;
+  bookmark: boolean;
+  id: number;
+}
+export default function Modal({ title, picture, bookmark, id }: Prop) {
   const dispatch = useDispatch();
   return (
     <ModalBackGround

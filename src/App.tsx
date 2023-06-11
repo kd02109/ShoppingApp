@@ -7,18 +7,25 @@ import { dispatchData } from "./redux/action/actions";
 import { useEffect } from "react";
 import ToastContainer from "./components/ToastContainer";
 import Modal from "./components/Modal";
+import { RootState } from "./redux/reducer/store";
 
 function App() {
   // toast item 불러오기
-  const toast = useSelector((state) => state.toast);
-  const modal = useSelector((state) => state.modal);
+  const toast = useSelector<RootState, RootState["toast"]>(
+    (state) => state.toast
+  );
+  const modal = useSelector<RootState, RootState["modal"]>(
+    (state) => state.modal
+  );
   //api 불러오기
   const { data } = useApi();
 
   //query 데이터 redux에 저장하기
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(dispatchData(data));
+    if (Array.isArray(data)) {
+      dispatch(dispatchData(data));
+    }
   }, []);
 
   return (
