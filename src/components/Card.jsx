@@ -22,7 +22,7 @@ const ImgBox = styled.div`
   justify-content: flex-end;
 `;
 
-export default function Card({ data }) {
+export default function Card({ data, ...arg }) {
   const dispatch = useDispatch();
   const onClick = () => {
     dispatch(
@@ -34,6 +34,24 @@ export default function Card({ data }) {
       )
     );
   };
+
+  //storybookserring
+  if (!data) {
+    data = {
+      id: 90,
+      type: "Exhibition",
+      title: "맥북 모음전",
+      sub_title: "애플 케어 추가 할인",
+      brand_name: null,
+      price: null,
+      discountPercentage: null,
+      image_url:
+        "https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2020&q=80",
+      brand_image_url: null,
+      follower: null,
+    };
+  }
+
   return (
     <>
       <Article onClick={onClick}>

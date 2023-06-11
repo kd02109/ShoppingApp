@@ -12,7 +12,7 @@ const Svg = styled.svg`
   margin: 10px;
 `;
 
-export default function Bookmark({ bookmark, id }) {
+export default function Bookmark({ bookmark, id, ...arg }) {
   const dispatch = useDispatch();
   const handleBookmark = (event) => {
     event.stopPropagation();

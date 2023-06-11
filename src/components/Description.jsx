@@ -14,7 +14,8 @@ const RightBox = styled.div`
 const LeftBox = styled(RightBox)``;
 
 const Title = styled.span`
-  font-size: ${(props) => props.theme.font.small};
+  font-size: ${(props) =>
+    props.theme.font.small ? props.theme.font.small : "14px"};
   font-weight: 600;
   text-align: start;
 `;
