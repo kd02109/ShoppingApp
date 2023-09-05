@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import React from "react";
 
 const Section = styled.section`
   cursor: pointer;
@@ -8,7 +9,7 @@ const Section = styled.section`
   flex-direction: column;
 `;
 
-const ImgDiv = styled.div`
+const ImgDiv = styled.div<{ imgSrc: string }>`
   background-image: url(${(props) => props.imgSrc});
   width: 82px;
   height: 82px;
@@ -19,8 +20,6 @@ const Title = styled.span`
   width: 82px;
   text-align: center;
   padding: 6.5px 0px;
-  color: ${(props) =>
-    props.numState === props.children ? "#412DD4" : "black"};
 `;
 
 const Line = styled.div`
@@ -28,7 +27,19 @@ const Line = styled.div`
   border-bottom: 4px solid #412dd4;
 `;
 
-export default function Filter({ imgSrc, title, filterState, setFilterState }) {
+interface Prop {
+  imgSrc: string;
+  title: string;
+  filterState: string;
+  setFilterState: React.Dispatch<React.SetStateAction<string>>;
+}
+
+export default function Filter({
+  imgSrc,
+  title,
+  filterState,
+  setFilterState,
+}: Prop) {
   const handleFilter = () => {
     const name = title;
     setFilterState(name);
@@ -36,7 +47,7 @@ export default function Filter({ imgSrc, title, filterState, setFilterState }) {
   return (
     <Section onClick={handleFilter}>
       <ImgDiv imgSrc={imgSrc} />
-      <Title filterState={filterState}>{title}</Title>
+      <Title>{title}</Title>
       {title === filterState && <Line />}
     </Section>
   );
