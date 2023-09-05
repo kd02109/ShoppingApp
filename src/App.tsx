@@ -18,7 +18,7 @@ function App() {
     (state) => state.modal
   );
   //api 불러오기
-  const { data } = useApi();
+  const { data, isError } = useApi();
 
   //query 데이터 redux에 저장하기
   const dispatch = useDispatch();

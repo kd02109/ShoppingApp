@@ -9,6 +9,7 @@ import {
   dispatchHambegerClose,
 } from "../redux/action/actions";
 import { RootState } from "../redux/reducer/store";
+import { Link } from "react-router-dom";
 
 const Head = styled.header`
   height: 80px;
@@ -53,8 +54,10 @@ export default function Header() {
   return (
     <Head onClick={onClick}>
       <div>
-        <LOGO src={img} alt="logo" />
-        <Title>COZ Shopping</Title>
+        <Link to={"/"}>
+          <LOGO src={img} alt="logo" />
+          <Title>COZ Shopping</Title>
+        </Link>
       </div>
       <LeftBox>
         <StyledIcon
