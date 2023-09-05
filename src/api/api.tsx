@@ -3,7 +3,7 @@ import axios from "axios";
 export interface APIData {
   id: number;
   type: string;
-  title: string;
+  title: string | null;
   sub_title: string | null;
   brand_name: string | null;
   price: string | null;
