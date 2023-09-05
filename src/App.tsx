@@ -8,7 +8,7 @@ import { useEffect } from "react";
 import ToastContainer from "./components/ToastContainer";
 import Modal from "./components/Modal";
 import { RootState } from "./redux/reducer/store";
-
+import { fakeData } from "./fake-data/fake-data";
 function App() {
   // toast item 불러오기
   const toast = useSelector<RootState, RootState["toast"]>(
@@ -25,6 +25,8 @@ function App() {
   useEffect(() => {
     if (Array.isArray(data)) {
       dispatch(dispatchData(data));
+    } else {
+      dispatch(dispatchData(fakeData));
     }
   }, []);
 

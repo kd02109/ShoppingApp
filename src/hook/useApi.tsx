@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { fakeData } from "../fake-data/fake-data";
+
 import getList, { APIData } from "../api/api";
 
 export default function useApi() {
@@ -16,9 +16,6 @@ export default function useApi() {
   let fetchData: APIData[] | undefined;
   if (!isLoading && Array.isArray(data)) {
     fetchData = data.map((item: APIData) => ({ ...item, bookmarked: false }));
-  }
-  if (isError) {
-    return { data: fakeData };
   }
   return { data: fetchData, isError, isLoading };
 }
