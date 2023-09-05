@@ -21,9 +21,8 @@ function Home() {
   const state = useSelector<RootState, RootState["bookmark"]>(
     (state) => state.bookmark
   );
-  const [randomNumber, setRandomNumber] = useState(
-    getRandomForSlice(state, CHOOSENUMBER)
-  );
+
+  const [randomNumber] = useState(getRandomForSlice(state!, CHOOSENUMBER));
 
   const { onClick } = useClick();
 

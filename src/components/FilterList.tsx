@@ -13,9 +13,14 @@ const FilterUl = styled.ul`
   gap: 36px;
 `;
 
+interface Prop {
+  filterState: string;
+  setFilterState: React.Dispatch<React.SetStateAction<string>>;
+}
+
 const imgArr = [allImg, productImg, categoryImg, exhibitionImg, brandImg];
 const titleArr = ["전체", "상품", "카테고리", "기획전", "브랜드"];
-export default function FilterList({ filterState, setFilterState }) {
+export default function FilterList({ filterState, setFilterState }: Prop) {
   return (
     <FilterUl>
       {imgArr.map((item, index) => (

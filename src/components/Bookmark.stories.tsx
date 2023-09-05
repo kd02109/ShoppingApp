@@ -1,5 +1,4 @@
-import React from "react";
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Bookmark from "./Bookmark";
 
 import set from "../redux/reducer/store";
@@ -15,7 +14,7 @@ export default {
   title: "Bookmark",
   component: Bookmark,
   decorators: [
-    (Story) => (
+    (Story: any) => (
       <Provider store={store}>
         <Story />
       </Provider>

@@ -11,7 +11,8 @@
     "postinstall": "husky install",
     "lint-staged": "lint-staged",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
@@ -22,6 +23,7 @@
     "@tanstack/react-query": "^4.29.5",
     "@types/redux-logger": "^3.0.9",
     "axios": "^1.4.0",
+    "gh-pages": "^6.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-intersection-observer": "^9.4.3",
@@ -68,5 +70,6 @@
     "./src/*.{js, jsx}": [
       "npm run lint"
     ]
-  }
+  },
+  "homepage": "https://kd02109.github.io/ShoppingApp/"
 }

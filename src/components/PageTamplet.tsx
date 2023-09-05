@@ -35,7 +35,7 @@ const itemSetType = {
   exhibition: "Exhibition",
 };
 interface Prop {
-  state: APIData[];
+  state: APIData[] | null;
 }
 
 const BASENUM = 30;
@@ -43,7 +43,7 @@ function PageTemplate({ state }: Prop) {
   const [filterState, setFilterState] = useState("전체");
   const { onClick } = useClick();
   // 무한 스크롤 구현
-  const { length } = state;
+  const { length } = state!;
   const [dataNum, setDataNum] = useState(BASENUM);
   const [ref, inView] = useInView();
 
@@ -60,32 +60,32 @@ function PageTemplate({ state }: Prop) {
         <FilterList filterState={filterState} setFilterState={setFilterState} />
       </Container>
       {filterState === filterSet.all && (
-        <CardList state={state.slice(0, dataNum)} />
+        <CardList state={state!.slice(0, dataNum)} />
       )}
       {filterState === filterSet.product && (
         <CardList
-          state={state
+          state={state!
             .slice(0, dataNum)
             .filter((item) => item.type === itemSetType.product)}
         />
       )}
       {filterState === filterSet.categoryl && (
         <CardList
-          state={state
+          state={state!
             .slice(0, dataNum)
             .filter((item) => item.type === itemSetType.category)}
         />
       )}
       {filterState === filterSet.exhibition && (
         <CardList
-          state={state
+          state={state!
             .slice(0, dataNum)
             .filter((item) => item.type === itemSetType.exhibition)}
         />
       )}
       {filterState === filterSet.brand && (
         <CardList
-          state={state
+          state={state!
             .slice(0, dataNum)
             .filter((item) => item.type === itemSetType.brand)}
         />

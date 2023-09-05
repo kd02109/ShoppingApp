@@ -31,7 +31,7 @@ interface Prop {
   toastBoomark: boolean;
   label?: string;
 }
-export default function Toast({ toastBoomark, label, ...args }: Prop) {
+export default function Toast({ toastBoomark, label }: Prop) {
   return (
     <>
       {toastBoomark ? (
